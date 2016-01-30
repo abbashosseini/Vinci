@@ -5,7 +5,15 @@
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in _database_ and i testedjust on  one app for now.
+its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database.
+
+#### Note :
+
+  testedjust on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
+
+#### this library good for: 
+
+This library good for thats applications have online communication with server all the time for offline mod need put some server side into in user device. 
 
 ####For Reading :
 
