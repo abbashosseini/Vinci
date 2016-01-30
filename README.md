@@ -58,22 +58,63 @@ Example:
 - [x] You can Use **RoundedImage** Class : <br/>
 
 Example:
-
+	
+	```xml
+	      <mklib.hosseini.com.vinci.Shapes.RoundedImage
+	      android:layout_height="120sp"
+	      android:layout_width="120sp"
+	      android:id="@+id/ID"
+	      android:layout_gravity="center"
+	      android:scaleType="centerCrop"
+	      android:padding="4dp"
+	      
+	      />
+	```
+![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
+  
+  
+####Gradle:
+  
+  
+  
+  
+  ```gradle
+	  allprojects {
+		repositories {
+			...
+			// In Build.gradle in Root Folder
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+```gradle	
+	// In Build.gradle in App Folder
+	dependencies {
+	        compile 'com.github.abbashosseini:Vinci:-SNAPSHOT'
+	}
+  
+  ````
+  
+####Maven :
 
 ```xml
-      <mklib.hosseini.com.vinci.Shapes.RoundedImage
-      android:layout_height="120sp"
-      android:layout_width="120sp"
-      android:id="@+id/ID"
-      android:layout_gravity="center"
-      android:scaleType="centerCrop"
-      android:padding="4dp"
-      
-      />
+	<!-- Step One  -->
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	
+	<!-- Step TWO  -->
+	
+	<dependency>
+	    <groupId>com.github.abbashosseini</groupId>
+	    <artifactId>Vinci</artifactId>
+	    <version>-SNAPSHOT</version>
+	</dependency>
+
 ```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
-  
-  
 
 ###License
 
