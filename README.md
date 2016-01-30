@@ -53,7 +53,7 @@ Example:
   
       />
 ```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.png =100x20)
+  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
 
 - [x] You can Use **RoundedImage** Class : <br/>
 
@@ -71,7 +71,7 @@ Example:
       
       />
 ```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.png =100x20)
+  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
   
   
 
