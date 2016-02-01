@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="mklib.hosseini.com.mylibrary" >
+    package="mklib.hosseini.com.vinci" >
 
     <application
         android:allowBackup="true"
