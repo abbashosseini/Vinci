@@ -5,7 +5,7 @@
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database.
+its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database and its **NOT** ThreadSafe and i try fix it in short notice BUT you can make it threadSafe.
 
 #### Note :
 
@@ -28,6 +28,8 @@ and now you can display your **Photo** in ImageView/CustomImageView _(RoundedIma
 ```java
   // Thats it
   new Vinci(context).PhotoFromDB(ByteImage)
+  //and use it like this  - setImageDrawable :
+  ImageViewID.setImageDrawable(new Vinci(context).PhotoFromDB(ByteImage));
 ```
 
 #### For Storing :
