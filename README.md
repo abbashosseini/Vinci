@@ -5,7 +5,15 @@
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in _database_ and i testedjust on  one app for now.
+its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database and its **NOT** ThreadSafe BUT you can make it threadSafe i add concurrency very **SOON**..
+
+#### Note :
+
+  testedjust on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
+
+#### this library good for: 
+
+This library good for thats applications have online communication with server all the time for offline mod need put some server side into in user device. 
 
 ####For Reading :
 
@@ -20,6 +28,8 @@ and now you can display your **Photo** in ImageView/CustomImageView _(RoundedIma
 ```java
   // Thats it
   new Vinci(context).PhotoFromDB(ByteImage)
+  //and use it like this  - setImageDrawable :
+  ImageViewID.setImageDrawable(new Vinci(context).PhotoFromDB(ByteImage));
 ```
 
 #### For Storing :
@@ -55,7 +65,7 @@ Example:
   
       />
 ```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
+  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
 
 - [x] You can Use **RoundedImage** Class : <br/>
 
@@ -72,7 +82,7 @@ Example:
 	      
 	      />
 	```
-![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
+![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
   
   
 ####Gradle:
