@@ -65,7 +65,7 @@ Example:
   
       />
 ```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
+  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
 
 - [x] You can Use **RoundedImage** Class : <br/>
 
@@ -82,7 +82,7 @@ Example:
 	      
 	      />
 	```
-![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
+![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
   
   
 ####Gradle:
