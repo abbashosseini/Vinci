@@ -11,7 +11,7 @@ its android library its get _URL_ and _download_ **image** also save it in _data
 * no need for RESTful Request to read everyTime (caching not solution for me Sorry)
 * **Important** handle user activity when is not Connected or user in (**OfflineMod**) when he connected you can notice what he change and you wanna allow or not.....
 
-i'm adding in future this but just wanna say what is **IDEA** Vinci Have.
+i'm adding these futurs SOON but for now just wanna say what is **IDEA** Vinci Have.
 
 
 
