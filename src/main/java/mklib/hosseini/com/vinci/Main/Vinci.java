@@ -7,6 +7,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class Vinci {
 
@@ -27,7 +33,13 @@ public class Vinci {
     public synchronized byte[] PhotoInDB(String Url) throws Exception {
 
 
-        return new PhotoProcess.logger(Url).call();
+        ExecutorService service =  Executors.newSingleThreadExecutor();
+        PhotoProcess.logger sumTask = new PhotoProcess.logger(Url);
+        Future<byte[]> future = service.submit(sumTask);
+        service.shutdown();
+        service.awaitTermination(5, TimeUnit.SECONDS);
+
+        return future.get();
 
     }
 
