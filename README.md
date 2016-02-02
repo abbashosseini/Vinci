@@ -9,7 +9,8 @@ its android library its get _URL_ and _download_ **image** also save it in _data
 
 #### Note :
 
-  testedjust on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
+  tested just on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
+  and feel free please add **issues**.
 
 #### this library good for: 
 
