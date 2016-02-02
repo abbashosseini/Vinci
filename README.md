@@ -5,7 +5,7 @@
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database and its **NOT** ThreadSafe BUT you can make it threadSafe i add concurrency very **SOON**..
+its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database .
 
 #### Note :
 
