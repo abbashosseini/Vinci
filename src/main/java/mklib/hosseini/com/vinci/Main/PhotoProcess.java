@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
-import java.util.concurrent.LinkedBlockingQueue;
+
+import mklib.hosseini.com.vinci.list.ImmutableList;
 
 /**
  * Created by abbas on 1/7/16.
@@ -21,7 +21,7 @@ public class PhotoProcess {
 
     public static class logger implements Callable<byte[]> {
 
-        final BlockingQueue<byte[]> messages = new LinkedBlockingQueue<>();
+        final ImmutableList<byte[]> messages = new ImmutableList<>();
 
         public logger(String url){
 
@@ -29,16 +29,12 @@ public class PhotoProcess {
         }
 
         public void log(byte[] message) {
-            try {
-                messages.put(message);
-            } catch (InterruptedException ignored) {
-
-            }
+            messages.prepend(message);
         }
 
         @Override
         public byte[] call() throws Exception {
-            return messages.take();
+            return messages.top;
         }
     }
 

@@ -29,7 +29,6 @@ public class RoundedImage extends ImageView {
         // TODO Auto-generated constructor stub
     }
 
-
      static void initBorderPaint() {
         mBorderPaint = new Paint();
         mBorderPaint.setAntiAlias(true);
@@ -89,7 +88,6 @@ public class RoundedImage extends ImageView {
                 sbmp.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
-        final int color = 0xffa19774;
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
 
