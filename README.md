@@ -1,26 +1,22 @@
 # Vinci Library
 
 ![Alt text](https://jitpack.io/v/abbashosseini/Vinci.svg)
->Vinci android library for get url and  save it Or Display the Photo From  DB
+>Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files 
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in _database_ and you can retrieve image form database i try make it simple to _work_ with **drawable and Bitmap** for example Work with this Objects is hard in **PICASSO** Library and VinCi not try to say saving your Images in database is *good practice* _NO_ at all this usrful for some app like mine save user profile in he's device for what :
+its android library its get _URL_ and _download_ **image** also save it in internal storage, you can also save image in _database_ and you can retrieve image form database.
+i try make it simple to _work_ with **Images** and mess with image any way you want convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all this usrful for some app like mine save user profile in he's device for what :
 
-* easy way to Handle user
-* no need for RESTful Request to read everyTime (caching not solution for me Sorry)
-* **Important** handle user activity when is not Connected or user in (**OfflineMod**) when he connected you can notice what he change and you wanna allow or not.....
+* you can use any URl from the net and use it in YOUR app just like that.
+* Download any image with any **FORMAT** from  the net and put it in users device and use it or use it as Drawable , Files, ByteArray, Bitmap or vice versa .
 
-i'm adding these futurs SOON but for now just wanna say what is **IDEA** Vinci Have.
 
 #### Note :
 
   tested just on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
-  and feel free please add **issues** .
+  and feel free please add _**issues**_ .
 
-#### this library good for: 
-
-This library good for thats applications have online communication with server all the time for offline mod need put some server side into in user device. 
 
 ####For Reading :
 
@@ -31,15 +27,33 @@ Example :
   byte[] ByteImage = cursor.getBlob(cursor.getColumnIndex(ColumnsName.IMAGE))
 ```
 and now you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
+
 * **Drawable** :
 ```java
   // Thats it
-  new Vinci(context).PhotoFromDB(ByteImage)
+  // new Vinci(context).AndDrawable(PhotoProcess.load(image))
   //and use it like this  - setImageDrawable :
-  ImageViewID.setImageDrawable(new Vinci(context).PhotoFromDB(ByteImage));
+  String image = "URL";
+  ImageView.setImageDrawable(
+                new Vinci(context).AndDrawable(
+                        PhotoProcess.load(image)));
 ```
 
 * **Bitmap**:
+
+```java
+   //support BitMap like this For now
+  
+  Bitmap bitmap = PhotoProcess.drawableToBitmap(
+                        new Vinci(context).AndDrawable(
+                            PhotoProcess.load(AxKarbar)
+                        )
+                );
+ImageView.setImageBitmap(bitmap);
+  
+```
+
+* **Byte Array**:
 
 ```java
    //support BitMap like this For now
@@ -51,17 +65,13 @@ and now you can display your **Photo** in ImageView/CustomImageView _(RoundedIma
 #### For Storing :
 
 
+**Internal Storage** :
 ```java
 
-  byte[] BitmapToByte = new Vinci(getContext).PhotoInDB(URL);
-
-```
-
-and now just put **BitmapToByte** varibale to **BLOB** _Field_ like this:
-
-```java
-  ContentValues values = new ContentValues();
-  values.put(ColumnsName.KARBAR_IMAGE, BitmapToByte);
+  	new Vinci(context).intoStorage(
+                            bitmapObject,
+                            FileName
+                    );
 
 ```
 
