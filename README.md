@@ -20,13 +20,7 @@ i try make it simple to _work_ with **Images** and mess with image any way you w
 
 ####For Reading :
 
-Example :
-
-```java
-  //Get photo from Database
-  byte[] ByteImage = cursor.getBlob(cursor.getColumnIndex(ColumnsName.IMAGE))
-```
-and now you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
+you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
 
 * **Drawable** :
 ```java
