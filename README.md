@@ -13,8 +13,6 @@ its android library its get _URL_ and _download_ **image** also save it in _data
 
 i'm adding these futurs SOON but for now just wanna say what is **IDEA** Vinci Have.
 
-
-
 #### Note :
 
   tested just on  one app for now, and its was part of my app i decided to put in here maybe was helpful .
@@ -33,13 +31,22 @@ Example :
   byte[] ByteImage = cursor.getBlob(cursor.getColumnIndex(ColumnsName.IMAGE))
 ```
 and now you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
-
+* **Drawable** :
 ```java
   // Thats it
   new Vinci(context).PhotoFromDB(ByteImage)
   //and use it like this  - setImageDrawable :
   ImageViewID.setImageDrawable(new Vinci(context).PhotoFromDB(ByteImage));
 ```
+
+* **Bitmap**:
+
+```java
+   //support BitMap like this For now
+  ImageView.setImageBitmap(BitmapFactory.decodeResource(getContext().getResources(), Drawable));
+  
+```
+
 
 #### For Storing :
 
