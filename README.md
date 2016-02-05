@@ -31,8 +31,10 @@ and now you can display your **Photo** in ImageView/CustomImageView _(RoundedIma
 * **Drawable** :
 ```java
   // Thats it
-  // new Vinci(context).AndDrawable(PhotoProcess.load(image))
-  //and use it like this  - setImageDrawable :
+   new Vinci(context).AndDrawable(PhotoProcess.load(image))
+  
+  //Example :
+  //and use it like this  - setImageDrawable - example:
   String image = "URL";
   ImageView.setImageDrawable(
                 new Vinci(context).AndDrawable(
@@ -57,7 +59,7 @@ ImageView.setImageBitmap(bitmap);
 
 ```java
    //support BitMap like this For now
-  ImageView.setImageBitmap(BitmapFactory.decodeResource(getContext().getResources(), Drawable));
+  new Vinci(getContext).AndByte("Image URL from the net");
   
 ```
 
