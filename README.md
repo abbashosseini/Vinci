@@ -55,6 +55,10 @@ ImageView.setImageBitmap(bitmap);
    //support BitMap like this For now
   new Vinci(getContext).AndByte("Image URL from the net");
   
+  //OR
+  byte[] imageByte  = PhotoProcess.load("URL");
+  //WhatEver
+  
 ```
 
 
