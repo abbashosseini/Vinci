@@ -163,7 +163,13 @@ i can't put it in **JCenter** / **Bintary** Right now ! so
 
 - [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci-release.aar) AAR File .
 - _go to file > New Module > Import .JAR or .AAR Package_
-- Imported and in **dependencies** add  _compile project(':Vinci-release')_
+- Imported and in **dependencies** add :
+
+ ```gradle	
+ 
+	compile project(':Vinci-release')		
+
+``` 
 
 ###License
 
