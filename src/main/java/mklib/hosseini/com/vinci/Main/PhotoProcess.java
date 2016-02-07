@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -27,7 +29,13 @@ public class PhotoProcess {
         final ImmutableList<byte[]> messages = new ImmutableList<>();
 
         public logger(final String url){
-            log(load(url));
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    log(load(url));
+                }
+            }).start();
+
         }
 
         public void log(byte[] message) {
@@ -89,4 +97,5 @@ public class PhotoProcess {
         drawable.draw(canvas);
         return bitmap;
     }
-    }
+
+}
