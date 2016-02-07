@@ -157,7 +157,7 @@ Example:
 
 #OR
 
-i can't put it in **JCenter** / **Bintary** Raight now ! so
+i can't put it in **JCenter** / **Bintary** Right now ! so
 
 #### Add **aar** file locally  :
 
