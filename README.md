@@ -155,6 +155,16 @@ Example:
 
 ```
 
+#OR
+
+i can't put it in **JCenter** / **Bintary** Raight now ! so
+
+#### Add **aar** file locally  :
+
+- Download AAR File .
+- _go to file > New Module > Import .JAR or .AAR Package_
+- Imported and in **dependencies** add  _compile project(':Vinci-release')_
+
 ###License
 
 	Copyright (C) 2015 AbbasHosseini
