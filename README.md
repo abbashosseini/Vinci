@@ -21,18 +21,18 @@ you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/Hexag
 * **Download** :
 
 ```java
-                Load load = new Load(new ResultProcess() {
-                    @Override
-                    public void onFinish(byte[] output) {
-                    //get Image file as byte
-                });
+Load load = new Load(new ResultProcess() {
+    @Override
+    public void onFinish(byte[] output) {
+    //get Image file as byte
+});
 
-                load.execute(AxKarbar);
-                
-                //OR
-                
-                //support BitMap like this For now
-  		new Vinci(getContext).AndByte("Image URL from the net");
+load.execute(AxKarbar);
+
+//OR
+
+//support BitMap like this For now
+  new Vinci(getContext).AndByte("Image URL from the net");
 
 
 ```
