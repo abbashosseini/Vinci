@@ -27,11 +27,11 @@ Load load = new Load(new ResultProcess() {
     //get Image file as byte
 });
 
-load.execute(AxKarbar);
+load.execute("URL");
 
 //OR
 
-new Vinci(getContext).AndByte("Image URL from the net");
+new Vinci(getContext).AndByte("URL");
 
 
 ```
