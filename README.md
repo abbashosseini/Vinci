@@ -59,6 +59,7 @@ new Vinci(getContext).AndByte("Image URL from the net");
   Bitmap bitmap = PhotoProcess.drawableToBitmap(
   			//Drawable
                 );
+                
 ImageView.setImageBitmap(bitmap);
   
 ```
