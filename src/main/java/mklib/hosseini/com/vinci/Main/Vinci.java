@@ -93,12 +93,6 @@ public class Vinci {
 
         return "VINCI_" + new SecureRandom().nextInt(10_000_000) + "_"+ matcher.group().toUpperCase() ;
     }
-    public synchronized Bitmap AndBitmap(String Url) throws InterruptedException, ExecutionException {
-
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(AndByte(Url));
-        return BitmapFactory.decodeStream(imageStream);
-
-    }
 
     public synchronized byte[] AndByte(String Url) throws InterruptedException, ExecutionException {
 
