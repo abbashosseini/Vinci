@@ -31,8 +31,7 @@ load.execute(AxKarbar);
 
 //OR
 
-//support BitMap like this For now
-  new Vinci(getContext).AndByte("Image URL from the net");
+new Vinci(getContext).AndByte("Image URL from the net");
 
 
 ```
