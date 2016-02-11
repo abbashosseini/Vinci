@@ -55,7 +55,6 @@ new Vinci(getContext).AndByte("Image URL from the net");
 * **Bitmap**:
 
 ```java
-   //support BitMap like this For now
   
   Bitmap bitmap = PhotoProcess.drawableToBitmap(
   			//Drawable
