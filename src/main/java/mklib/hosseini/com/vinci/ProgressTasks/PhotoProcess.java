@@ -5,7 +5,7 @@ import java.util.concurrent.Callable;
 import mklib.hosseini.com.vinci.Callbacks.ResultProcess;
 import mklib.hosseini.com.vinci.list.ImmutableList;
 
-public class PhotoProcess {
+public class PhotoProcess implements  {
 
     public static class logger implements Callable<byte[]> {
 
