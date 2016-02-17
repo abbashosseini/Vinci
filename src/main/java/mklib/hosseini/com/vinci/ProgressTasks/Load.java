@@ -8,19 +8,18 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by abbas on 2/9/16.
- */
+import mklib.hosseini.com.vinci.Callbacks.ExecuteResult;
+import mklib.hosseini.com.vinci.Callbacks.ResultProcess;
+
 
 public class  Load extends AsyncTask<String, Void, byte[]> {
 
-    public ResultProcess delegate;
+    private static ResultProcess delegate;
+    private static ExecuteResult byteArray;
 
     public Load(ResultProcess asyncResponse) {
-        this.delegate = asyncResponse;
+        delegate = asyncResponse;
     }
-
-
 
     @Override
     protected synchronized byte[] doInBackground(String... params) {
@@ -61,8 +60,8 @@ public class  Load extends AsyncTask<String, Void, byte[]> {
     protected synchronized void onPostExecute(byte[] result) {
         // In onPostExecute we check if the listener is valid
         // And if it is we call the callback function on it.
-        if(this.delegate != null)
-            delegate.onFinish(result);
+        if(delegate != null)
+                delegate.onFinish(result);
     }
 
 
@@ -71,5 +70,18 @@ public class  Load extends AsyncTask<String, Void, byte[]> {
 
     @Override
     protected void onProgressUpdate(Void... values) {}
+
+    public static Load load(ExecuteResult onReady){
+        byteArray = onReady;
+
+        return new Load(new ResultProcess() {
+            @Override
+            public void onFinish(byte[] output) {
+
+                byteArray.OnReady(output);
+
+            }
+        });
+    }
 
 }
