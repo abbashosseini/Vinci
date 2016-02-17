@@ -64,10 +64,7 @@ ImageView.setImageBitmap(bitmap);
 
 
 
-#### For Storing :
-
-
-**Internal Storage** :
+**Internal Storage**/**Files** :
 ```java
 
   	String PathOnStorage  = new Vinci(context).intoStorage(
@@ -169,7 +166,7 @@ i can't put it in **JCenter** / **Bintary** Right now ! so
 
 #### Add **aar** file locally  :
 
-- [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci-release.aar?raw=true) AAR File .
+- [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci.aar?raw=true) AAR File .
 - _go to file > New Module > Import .JAR or .AAR Package_
 - Imported and in **dependencies** add :
 
