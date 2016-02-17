@@ -1,16 +1,17 @@
 # Vinci Library
 
-![Alt text](https://jitpack.io/v/abbashosseini/Vinci.svg)
->Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files 
+[![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
+>Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files and easy Internal Storage Task and get URI if you like Put it in databasec or just displayed on ImageView.
 
 ### About VinCi :
 
-its android library its get _URL_ and _download_ **image** also save it in internal storage, you can also save image in _database_ and you can retrieve image form database.
-i try make it simple to _work_ with **Images** and mess with image any way you want convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all this usrful for some app like mine save user profile in he's device.
+its android library its get _URL_ and valid one of cource and _download_ **image** also save it in internal storage and you can put it any where you like and  you can also save image in _database_ and you can retrieve image form database.
+i try make it simple to _work_ with **Images** and mess with images or convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all.
 
 #### Can Do :
 
 * you can use any URl from the net and use it in YOUR app just like that.
+* You can display you image you have ot user have on imageView.
 * Download any image with any **FORMAT** from  the net and put it in users device and use it or use it as Drawable , Files, ByteArray, Bitmap or vice versa .
 
 
@@ -29,9 +30,7 @@ Load load = new Load(new ResultProcess() {
 
 load.execute("URL");
 
-//OR
-
-new Vinci(getContext).AndByte("URL");
+//OR implements  Activity or non-Activity class or use it in its own class 
 
 
 ```
@@ -39,24 +38,23 @@ new Vinci(getContext).AndByte("URL");
 * **Drawable** :
 ```java
   // Thats it
-   new Vinci(context).AndDrawable(PhotoProcess.load(image))
+   //new Vinci(context).AndDrawable(ByteArray)
   
   //Example :
   //and use it like this  - setImageDrawable - example:
-  String image = "URL";
   
-  
-  ImageView.setImageDrawable(
-                new Vinci(context).AndDrawable(
-                	//byteArray
-                        ));
+  Drawable drawable = new Vinci(context).AndDrawable(
+					  //byteArray
+					  );
+					  
+  ImageView.setImageDrawable(drawable);
 ```
 
 * **Bitmap**:
 
 ```java
   
-  Bitmap bitmap = PhotoProcess.drawableToBitmap(
+  Bitmap bitmap = new Vinci(context).drawableToBitmap(
   			//Drawable
                 );
                 
@@ -72,11 +70,16 @@ ImageView.setImageBitmap(bitmap);
 **Internal Storage** :
 ```java
 
-  	new Vinci(context).intoStorage(
-                                    bitmap, //put your image as bitmap here
-                                    String, //put your file name here 
-                                    ""	    //ifyou don't like default path so change it here
-                            );
+  	String PathOnStorage  = new Vinci(context).intoStorage(
+  			/*pass your file name here With extension of cource*/
+  			String fileName, 
+  			/* if for not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
+  			String CustomPATH, 
+  			/* this pas you pas number between 1 , 10 
+  			   for size 10 highest less then 10 image
+  			   become les quality and size of cource*/
+  			int Quality
+  		);
 
 ```
 
@@ -134,7 +137,7 @@ Example:
 ```gradle	
 	// In Build.gradle in App Folder
 	dependencies {
-	        compile 'com.github.abbashosseini:Vinci:-SNAPSHOT'
+	        compile 'com.github.abbashosseini:Vinci:ed6b74ebcc'
 	}
   
   ````
@@ -155,7 +158,7 @@ Example:
 	<dependency>
 	    <groupId>com.github.abbashosseini</groupId>
 	    <artifactId>Vinci</artifactId>
-	    <version>-SNAPSHOT</version>
+	    <version>ed6b74ebcc</version>
 	</dependency>
 
 ```
