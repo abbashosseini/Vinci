@@ -65,14 +65,14 @@ load.execute("URL");
   			uriToString, 
   			
   			/* if you not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
-  			Path, 
+  			"", 
   			
   			/* in this one you set quality and size image 
   			   if you added 10, all images will store with 
   			   orginal size BUT
   			   if you add less then 10 images become less quality
   			   and size then orginal one .*/
-  			Quality
+  			0
   		);
 
 ```
