@@ -31,7 +31,7 @@ public class Vinci {
 
 
 
-    private static volatile Context context;
+    private static Context context;
     private final String PATH = String.format("%s/%s",
             getClass().getSimpleName(),
             "Pictures");
@@ -43,7 +43,7 @@ public class Vinci {
     }
 
 
-    public synchronized Drawable AndDrawable(byte[] imageByte){
+    public synchronized Drawable andDrawable(byte[] imageByte){
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(imageByte);
         Bitmap image = BitmapFactory.decodeStream(imageStream);
@@ -109,9 +109,9 @@ public class Vinci {
             @Override
             public void OnReady(byte[] byteArray) {
 
-                Drawable drawable = AndDrawable(byteArray);
+                Drawable drawable = andDrawable(byteArray);
 
-                drawableToBitmap(drawable).
+                andBitmap(drawable).
                         compress(Bitmap.CompressFormat.JPEG,
                                 sizeAndquality,
                                 bytes);
@@ -148,7 +148,7 @@ public class Vinci {
         return "VINCI_" + new SecureRandom().nextInt(10_000_000) + "_"+ matcher.group().toUpperCase() ;
     }
 
-    public synchronized byte[] AndByte(String Url) throws InterruptedException, ExecutionException {
+    public synchronized byte[] andByte(String Url) throws InterruptedException, ExecutionException {
 
         ExecutorService service =  Executors.newSingleThreadExecutor();
         PhotoProcess.logger sumTask = new PhotoProcess.logger(Url);
@@ -161,7 +161,7 @@ public class Vinci {
     }
 
 
-    public synchronized static Bitmap drawableToBitmap (Drawable drawable) {
+    public synchronized static Bitmap andBitmap(Drawable drawable) {
         Bitmap bitmap;
 
         if (drawable instanceof BitmapDrawable) {
