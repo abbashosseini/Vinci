@@ -167,6 +167,7 @@ i can't put it in **JCenter** / **Bintary** Right now ! so
 - _go to file > New Module > Import .JAR or .AAR Package_
 - Imported and in **dependencies** add :
 
+
  ```gradle	
  
 	compile project(':Vinci-release')		
