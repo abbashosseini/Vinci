@@ -159,12 +159,10 @@ Example:
 
 #OR
 
-i can't put it in **JCenter** / **Bintary** Right now ! so
-
 #### Add **aar** file locally  :
 
 - [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci.aar?raw=true) AAR File .
-- _go to file > New Module > Import .JAR or .AAR Package_
+- _go to_ **File** > **New Module** > **Import .JAR or .AAR Package**
 - Imported and in **dependencies** add :
 
 
