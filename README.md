@@ -1,11 +1,10 @@
-# Vinci Library
+# Vinci Library [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
-[![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 >Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files and easy Internal Storage Task and get URI if you like Put it in databasec or just displayed on ImageView.
 
 ### About VinCi :
 
-##### Min API 7+
+##### Min API 10+
 
 its android library its get _URL_ and valid one of cource and _download_ **image** also save it in internal storage and you can put it any where you like and  you can also save image in _database_ and you can retrieve image form database.
 i try make it simple to _work_ with **Images** and mess with images or convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all.
@@ -39,16 +38,10 @@ load.execute("URL");
 
 * **Drawable** :
 ```java
-  // Thats it
-   //new Vinci(context).AndDrawable(ByteArray)
+
+  //and use it like this  With setImageDrawable :
   
-  //Example :
-  //and use it like this  - setImageDrawable - example:
-  
-  Drawable drawable = new Vinci(context).AndDrawable(
-					  //byteArray
-					  );
-					  
+  Drawable drawable = new Vinci(context).andDrawable(/*Byte Array*/);
   ImageView.setImageDrawable(drawable);
 ```
 
@@ -56,28 +49,30 @@ load.execute("URL");
 
 ```java
   
-  Bitmap bitmap = new Vinci(context).drawableToBitmap(
-  			//Drawable
-                );
-                
-ImageView.setImageBitmap(bitmap);
+  Bitmap bitmap = new Vinci(context).andBitmap(/*Drawable*/);
+  ImageView.setImageBitmap(bitmap);
   
 ```
 
 
 
-**Internal Storage**/**Files** :
+**Storage** and **Files** :
 ```java
 
   	String PathOnStorage  = new Vinci(context).intoStorage(
-  			/*pass your file name here With extension of cource*/
-  			String fileName, 
-  			/* if for not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
-  			String CustomPATH, 
-  			/* this pas you pas number between 1 , 10 
-  			   for size 10 highest less then 10 image
-  			   become les quality and size of cource*/
-  			int Quality
+  	
+  			/*pass your URI contain image files as String you want here With extension*/
+  			uriToString, 
+  			
+  			/* if you not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
+  			"", 
+  			
+  			/* in this one you set quality and size image 
+  			   if you added 10, all images will store with 
+  			   orginal size BUT
+  			   if you add less then 10 images become less quality
+  			   and size then orginal one .*/
+  			0
   		);
 
 ```
@@ -164,13 +159,12 @@ Example:
 
 #OR
 
-i can't put it in **JCenter** / **Bintary** Right now ! so
-
 #### Add **aar** file locally  :
 
 - [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci.aar?raw=true) AAR File .
-- _go to file > New Module > Import .JAR or .AAR Package_
+- _go to_ **File** > **New Module** > **Import .JAR or .AAR Package**
 - Imported and in **dependencies** add :
+
 
  ```gradle	
  
