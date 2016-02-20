@@ -89,6 +89,20 @@ Retrive a **File** From **internalStorage**:
 
 ```
 
+#### for multiThread, Concurrency and Safety you can use `SafeList` for more then one file :
+
+```java
+
+SafeList<Object> list = new SafeList<>();
+//add objects
+list.prepend(/* Objects */);
+//take objects
+list.top(/* get Objects */);
+
+	
+
+```
+
 
 ### ScreenShot and Custom ImageView:
 
