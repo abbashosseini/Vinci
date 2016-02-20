@@ -1,28 +1,28 @@
 package mklib.hosseini.com.vinci.list;
 
-public final class ImmutableList<E> {
+public final class SafeList<E> {
 
 	public final E top;
-	public final ImmutableList<E> last;
+	public final SafeList<E> last;
 
-	public ImmutableList() {
+	public SafeList() {
 		this.top = null;
 		this.last = null;
 	}
 
-	private ImmutableList(E top, ImmutableList<E> last) {
+	private SafeList(E top, SafeList<E> last) {
 		this.top = top;
 		this.last = last;
 	}
 
-	public ImmutableList<E> prepend(E element) {
-		return new ImmutableList<E>(element, this);
+	public SafeList<E> prepend(E element) {
+		return new SafeList<E>(element, this);
 	}
 	
-	public <E2> ImmutableList<E2> transform(Function<? super E, ? extends E2> fn) {
+	public <E2> SafeList<E2> transform(Function<? super E, ? extends E2> fn) {
 		return last == null
-			? new ImmutableList<E2>()
-			: new ImmutableList<E2>(fn.apply(top), last.transform(fn));
+			? new SafeList<E2>()
+			: new SafeList<E2>(fn.apply(top), last.transform(fn));
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public final class ImmutableList<E> {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof ImmutableList))
+		if (!(obj instanceof SafeList))
 			return false;
-		ImmutableList other = (ImmutableList) obj;
+		SafeList other = (SafeList) obj;
 		if (top == null) {
 			if (other.top != null)
 				return false;

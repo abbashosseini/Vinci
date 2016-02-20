@@ -1,4 +1,4 @@
-package mklib.hosseini.com.vinci.ProgressTasks;
+package mklib.hosseini.com.vinci.Tasks;
 
 import android.os.AsyncTask;
 
@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import mklib.hosseini.com.vinci.Callbacks.ExecuteResult;
 import mklib.hosseini.com.vinci.Callbacks.ResultProcess;
 
 
@@ -16,6 +15,11 @@ public class  Load extends AsyncTask<String, Void, byte[]> {
 
     private static ResultProcess delegate;
     private static ExecuteResult byteArray;
+
+
+    public interface ExecuteResult {
+        void OnReady(byte[] byteArray) ;
+    }
 
     public Load(ResultProcess asyncResponse) {
         delegate = asyncResponse;
@@ -71,7 +75,7 @@ public class  Load extends AsyncTask<String, Void, byte[]> {
     @Override
     protected void onProgressUpdate(Void... values) {}
 
-    public static Load load(ExecuteResult onReady){
+    public static synchronized Load from(ExecuteResult onReady){
         byteArray = onReady;
 
         return new Load(new ResultProcess() {
