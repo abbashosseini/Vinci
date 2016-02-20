@@ -60,6 +60,7 @@ Load.from(result).execute("URI");
 
 
 Store a **Files**  into **internalStorage**:
+
 ```java
 
   	String PathOnStorage  = new Vinci(context).intoStorage(
@@ -67,7 +68,7 @@ Store a **Files**  into **internalStorage**:
   			/*pass your URI contain image files as String you want here With extension*/
   			uriToString, 
   			
-  			/* if you not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
+  			/* if you not like default PATH  /storage/emulated/0/Vinci/Pictures  change it here*/
   			"", 
   			
   			/* in this one you set quality and size image 
@@ -83,7 +84,7 @@ Store a **Files**  into **internalStorage**:
 Retrive a **File** From **internalStorage**:
 ```java
 
-  	Drawable drawable = Vinci.fromStorage(/*UriAsString*/);
+  	Drawable drawable = Vinci.fromStorage(/*PATH*/);
   	imageView.setImageDrawable(drawable);
 
 ```
