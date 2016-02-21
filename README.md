@@ -23,16 +23,19 @@ you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/Hexag
 * **Download** :
 
 ```java
-Load load = new Load(new ResultProcess() {
-    @Override
-    public void onFinish(byte[] output) {
-    //get Image file as byte
-});
 
-load.execute("URL");
+Load.ExecuteResult result = new Load.ExecuteResult() {
+	@Override
+	public void OnReady(byte[] byteArray) {
+	
+	    /*
+	    here can get image as byte array 
+	    */
+	
+	}
+};
 
-//OR implements  Activity or non-Activity class or use it in its own class 
-
+Load.from(result).execute("URI");
 
 ```
 
@@ -56,7 +59,8 @@ load.execute("URL");
 
 
 
-**Storage** and **Files** :
+Store a **Files**  into **internalStorage**:
+
 ```java
 
   	String PathOnStorage  = new Vinci(context).intoStorage(
@@ -64,7 +68,7 @@ load.execute("URL");
   			/*pass your URI contain image files as String you want here With extension*/
   			uriToString, 
   			
-  			/* if you not like default PATH ( /storage/emulated/0/Vinci/Pictures ) change it here*/
+  			/* if you not like default PATH  /storage/emulated/0/Vinci/Pictures  change it here*/
   			"", 
   			
   			/* in this one you set quality and size image 
@@ -74,6 +78,28 @@ load.execute("URL");
   			   and size then orginal one .*/
   			0
   		);
+
+```
+
+Retrive a **File** From **internalStorage**:
+```java
+
+  	Drawable drawable = Vinci.fromStorage(/*PATH*/);
+  	imageView.setImageDrawable(drawable);
+
+```
+
+#### for multiThread, Concurrency and Safety you can use `SafeList` for more then one file :
+
+```java
+
+SafeList<Object> list = new SafeList<>();
+//add objects
+list.prepend(/* Objects */);
+//take objects
+list.top(/* get Objects */);
+
+	
 
 ```
 
