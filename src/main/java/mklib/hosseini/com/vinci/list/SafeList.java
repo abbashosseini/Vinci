@@ -1,5 +1,6 @@
 package mklib.hosseini.com.vinci.list;
-
+/*
+* for future use */
 public final class SafeList<E> {
 
 	public final E top;
