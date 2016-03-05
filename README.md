@@ -44,7 +44,14 @@ Load.from(result).execute("URI");
 
   //and use it like this  With setImageDrawable :
   
-  Drawable drawable = new Vinci(context).andDrawable(/*Byte Array*/);
+  Drawable drawable = Vinci.base(context) 
+	  			/** 
+				* for converts file use TYPE() 
+				* for Storage actions use `storage()`
+				*/
+	  			.type()
+	  			.andDrawable(byteArray);
+  			
   ImageView.setImageDrawable(drawable);
 ```
 
@@ -52,7 +59,8 @@ Load.from(result).execute("URI");
 
 ```java
   
-  Bitmap bitmap = new Vinci(context).andBitmap(/*Drawable*/);
+  Bitmap bitmap = Vinci.base(context).type().andBitmap(/*Drawable*/);
+  
   ImageView.setImageBitmap(bitmap);
   
 ```
@@ -63,7 +71,7 @@ Store a **Files**  into **internalStorage**:
 
 ```java
 
-  	String PathOnStorage  = new Vinci(context).intoStorage(
+  	String PathOnStorage  = Vinci.base(getContext).storage().into(
   	
   			/*pass your URI contain image files as String you want here With extension*/
   			uriToString, 
@@ -84,7 +92,7 @@ Store a **Files**  into **internalStorage**:
 Retrive a **File** From **internalStorage**:
 ```java
 
-  	Drawable drawable = Vinci.fromStorage(/*PATH*/);
+  	Drawable drawable = Vinci.base(getContext).storage().from(/*PATH*/);
   	imageView.setImageDrawable(drawable);
 
 ```
