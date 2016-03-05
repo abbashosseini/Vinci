@@ -1,15 +1,14 @@
-package mklib.hosseini.com.vinci;
+package mklib.hosseini.com.vinci.Classes;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,52 +19,44 @@ import java.util.regex.Pattern;
 
 import mklib.hosseini.com.vinci.Tasks.Load;
 
-public class Vinci {
+/**
+ * @auther abbas
+ * @since 3/5/16.
+ */
+public class Storage extends Vinci {
 
-    private static Context context;
-    private final String PATH = String.format("%s/%s",
-            getClass().getSimpleName(),
+    protected final String PATH = String.format(
+            "%s/%s",
+            "Vinci",
             "Pictures");
 
-    public Vinci(){}
+    protected int Quality;
+    protected File fileImage;
 
-    public Vinci(Context context){
-        Vinci.context = context;
+    /* its just space for Bitmap*/
+    final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+
+    Storage(Context context) {
+        super(context);
     }
 
-
-    public synchronized Drawable into(String PATH){
-        return Drawable.createFromPath(new File(PATH).toString());
-    }
-
-
-    public synchronized Drawable andDrawable(byte[] imageByte){
-
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(imageByte);
-        Bitmap image = BitmapFactory.decodeStream(imageStream);
-        return new BitmapDrawable(context.getResources(), image);
-    }
-
-
-    public String intoStorage(String name, String paths, int quality){
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public String into(String name, String paths, int quality){
 
         /*
         * this variable hold on to quality and of course size of file between 1 to 10
         * 10 is highest and will save the image file with orginal quality and size
         * or less the 10  image quality/size become lower then orginal one.
         * */
-        final int sizeAndquality = quality >= 1
-                                    ? quality * 10
-                                    : 10 * 10;
-
-        /* its just space for Bitmap*/
-        final ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        Quality = quality >= 1
+                ? quality * 10
+                : 10 * 10;
 
         /* set your path for saving image file on Storage*/
         String MyPath = paths.isEmpty()? "" : paths ;
 
         /* parse string and extract name with extension from String*/
-        String fileName = FileName(name);
+        String fileName = fileName(name);
 
         /**
          * setup path in device for save image file to it and its defualt path is :
@@ -89,7 +80,7 @@ public class Vinci {
 
         /*
         * Create files on the internal storage*/
-        final File fileImage = new File(path, fileName);
+        fileImage = new File(path, fileName);
 
         boolean FileIsCrreated;
         try {
@@ -98,18 +89,22 @@ public class Vinci {
             Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
         }
 
-        /*
-        * compress bitmap to real size (100) if you use less then 100,  image
-        * converter to Lighter then  real size  */
-        Load.ExecuteResult byteArray = new Load.ExecuteResult() {
+
+        Load.ExecuteResult result = new Load.ExecuteResult() {
+
+            /*
+            * compress bitmap to real size (100) if you use less then 100,  image
+            * converter to Lighter then  real size  */
             @Override
             public void OnReady(byte[] byteArray) {
 
-                Drawable drawable = andDrawable(byteArray);
-                andBitmap(drawable).
-                    compress(Bitmap.CompressFormat.JPEG,
-                    sizeAndquality,
-                    bytes);
+                Types types = new Types(ctxt);
+
+                Drawable drawable = types.andDrawable(byteArray);
+                types.andBitmap(drawable).
+                        compress(Bitmap.CompressFormat.JPEG,
+                                Quality,
+                                bytes);
 
                 FileOutputStream fo;
                 try {
@@ -124,21 +119,22 @@ public class Vinci {
             }
         };
 
+
         /*
         * get ready to proccess the URi and get Image as byte and make it file and put it
         * in internal storage and pass URI for database if your like store it in SQLite*/
-        Load.from(byteArray).execute(name);
+        Load.from(result).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, name);
 
         return fileImage.getAbsolutePath();
 
     }
 
-    public synchronized static Drawable fromStorage(String PATH){
+    public Drawable from(String PATH){
         File filePath = new File(PATH);
         return Drawable.createFromPath(filePath.toString());
     }
 
-    private String FileName(String name){
+    private synchronized String fileName(String name){
         Pattern pattern = Pattern.compile("([\\w]+.\\w{3})$");
         Matcher matcher = pattern.matcher(name);
 
@@ -147,32 +143,5 @@ public class Vinci {
 
         return "VINCI_" + new SecureRandom().nextInt(10_000_000) + "_"+ matcher.group().toUpperCase() ;
     }
-
-    public synchronized static Bitmap andBitmap(Drawable drawable) {
-        Bitmap bitmap;
-
-        if (drawable instanceof BitmapDrawable) {
-            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-            if(bitmapDrawable.getBitmap() != null) {
-                return bitmapDrawable.getBitmap();
-            }
-        }
-
-        if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
-            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-            // Single color bitmap will be created of 1x1 pixel
-        } else {
-            bitmap = Bitmap.createBitmap(
-                    drawable.getIntrinsicWidth(),
-                    drawable.getIntrinsicHeight(),
-                    Bitmap.Config.ARGB_8888);
-        }
-
-        Canvas canvas = new Canvas(bitmap);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        drawable.draw(canvas);
-        return bitmap;
-    }
-
 
 }

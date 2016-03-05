@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import mklib.hosseini.com.vinci.Callbacks.ResultProcess;
+import mklib.hosseini.com.vinci.Classes.ResultProcess;
 
 
 public class  Load extends AsyncTask<String, Void, byte[]> {
@@ -75,7 +75,7 @@ public class  Load extends AsyncTask<String, Void, byte[]> {
     @Override
     protected void onProgressUpdate(Void... values) {}
 
-    public static synchronized Load from(ExecuteResult onReady){
+    public static Load from(ExecuteResult onReady){
         byteArray = onReady;
 
         return new Load(new ResultProcess() {
