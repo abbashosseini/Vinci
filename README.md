@@ -61,15 +61,7 @@ String image = Vinci
 Log.i(getClass().getSimpleName(), image);
 ```
 
-Retrive a **File** From **internalStorage**:
-```java
-
-  	Drawable drawable = Vinci.base(getContext).storage().from(/*PATH*/);
-  	imageView.setImageDrawable(drawable);
-
-```
-
-#### for multiThread, Concurrency and Safety you can use `SafeList` for more then one file :
+#### for safe list/Collection you can use`SafeList` :
 
 ```java
 
@@ -78,8 +70,6 @@ SafeList<Object> list = new SafeList<>();
 list.prepend(/* Objects */);
 //take objects
 list.top(/* get Objects */);
-
-	
 
 ```
 
@@ -128,17 +118,15 @@ Example:
   ```gradle
 	  allprojects {
 		repositories {
-			...
-			// In Build.gradle in Root Folder
 			maven { url "https://jitpack.io" }
 		}
 	}
 ```
 ```gradle	
-	// In Build.gradle in App Folder
 	dependencies {
-	        compile 'com.github.abbashosseini:Vinci:ed6b74ebcc'
+	        compile 'com.github.abbashosseini:Vinci:-SNAPSHOT'
 	}
+
   
   ````
   
@@ -146,7 +134,7 @@ Example:
 
 ```xml
 	<!-- Step One  -->
-	<repositories>
+		<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
@@ -154,12 +142,13 @@ Example:
 	</repositories>
 	
 	<!-- Step TWO  -->
-	
 	<dependency>
 	    <groupId>com.github.abbashosseini</groupId>
 	    <artifactId>Vinci</artifactId>
-	    <version>ed6b74ebcc</version>
+	    <version>-SNAPSHOT</version>
 	</dependency>
+
+
 
 ```
 
