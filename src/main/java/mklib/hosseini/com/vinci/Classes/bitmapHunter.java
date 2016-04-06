@@ -20,7 +20,7 @@ class bitmapHunter implements Runnable {
 
     public void run() {
 
-        if(loader.imageViewReused(item))
+        if(loader.getFromCaching(item))
             return;
 
         if(bitmap != null)

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 class SeperateItems implements Runnable {
     final Item item;
     final Loader loader;
+
     SeperateItems(Item item, Loader loader){
 
         this.item = item;
@@ -17,11 +18,11 @@ class SeperateItems implements Runnable {
 
     @Override
     public void run() {
-        if(loader.imageViewReused(item))
+        if(loader.getFromCaching(item))
             return;
         Bitmap bmp = loader.getBitmap(item.url);
         loader.memoryCache.put(item.url, bmp);
-        if(loader.imageViewReused(item))
+        if(loader.getFromCaching(item))
             return;
         bitmapHunter bd = new bitmapHunter(bmp, item, loader);
         Activity a =(Activity) item.imageView.getContext();

@@ -3,6 +3,8 @@ package mklib.hosseini.com.vinci.Classes;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -10,6 +12,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -18,7 +22,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import mklib.hosseini.com.vinci.R;
 
@@ -26,11 +29,11 @@ public class Loader {
 
     private final Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
     final MemoryCaching memoryCache = new MemoryCaching();
-    final int displayDefualtDawable = R.drawable.fail;
     final FileCaching fileCache;
     final ExecutorService executorService;
     final Context mContext;
     String ImageUrl;
+    Integer displayDefualtDawable = R.drawable.fail;
 
 
     public Loader(Context context){
@@ -38,12 +41,74 @@ public class Loader {
         mContext = context;
         fileCache = new FileCaching(context);
         executorService = Executors.newFixedThreadPool(10);
+
+//        if (!isNetworkOnline()) {
+//            throw new IllegalAccessError("Network Connection, make sure you have correct connection !! ");
+//        }
+    }
+
+    private boolean isNetworkOnline() {
+
+        boolean status = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = connectivityManager.getNetworkInfo(0);
+
+        if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+            status= true;
+        }
+
+        else {
+            netInfo = connectivityManager.getNetworkInfo(1);
+            if(netInfo!=null && netInfo.getState()==NetworkInfo.State.CONNECTED)
+                status= true;
+        }
+        return status;
+    }
+
+    public Loader error(int drawable){
+        displayDefualtDawable = drawable;
+        return this;
     }
 
     public Loader load(String imageUrl){
 
         this.ImageUrl = imageUrl;
         return this;
+    }
+
+    public String KeepIt(){
+
+
+        Bitmap bitmapFile = null;
+
+        ExecutorService service = Executors.newCachedThreadPool();
+        Future<Bitmap> bitmapFuture = service.submit(new Download(this.ImageUrl, this));
+        try {
+            bitmapFile = bitmapFuture.get();
+            service.shutdown();
+            service.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(e.getClass().getSimpleName(), e.getMessage());
+        }
+
+        File fileDir = new File(android.os.Environment.getExternalStorageDirectory(),"Vinci/files");
+        fileDir.mkdirs();
+
+        String filename = String.format("%d_%d", this.ImageUrl.length(), this.ImageUrl.hashCode());
+        File imageFile = new File(fileDir, filename + ".jpg");
+
+        OutputStream os;
+        try {
+            os = new FileOutputStream(imageFile);
+            bitmapFile.compress(Bitmap.CompressFormat.PNG, 100, os);
+            os.flush();
+            os.close();
+        } catch (Exception e) {
+            Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+        }
+
+        return imageFile.getAbsolutePath();
+
     }
 
     public void putIn(ImageView imageView) {
@@ -75,7 +140,7 @@ public class Loader {
         if(b!=null)
             return b;
 
-        //from web if image not cacjing before
+        //from web if image not caching before
 
         ExecutorService service = Executors.newCachedThreadPool();
         Future<Bitmap> bitmapFuture = service.submit(new Download(url, this));
@@ -124,7 +189,7 @@ public class Loader {
         return null;
     }
 
-    protected boolean imageViewReused(Item item){
+    protected boolean getFromCaching(Item item){
         String tag = imageViews.get(item.imageView);
         return tag == null || !tag.equals(item.url);
     }

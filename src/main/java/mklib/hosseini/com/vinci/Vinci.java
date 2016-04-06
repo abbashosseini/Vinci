@@ -1,6 +1,8 @@
-package mklib.hosseini.com.vinci.Classes;
+package mklib.hosseini.com.vinci;
 
 import android.content.Context;
+
+import mklib.hosseini.com.vinci.Classes.Loader;
 
 public class Vinci {
 

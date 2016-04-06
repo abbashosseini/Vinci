@@ -1,38 +1,47 @@
 package mklib.hosseini.com.vinci.Classes;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URLEncoder;
+
 import android.content.Context;
+import android.util.Log;
 
 public class FileCaching {
 
     private File cacheDir;
 
     public FileCaching(Context context){
+
         //Find the dir to save cached images
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"TTImages_cache");
+                cacheDir = new File(android.os.Environment.getExternalStorageDirectory(),"Vinci/cache");
+
         else
-            cacheDir=context.getCacheDir();
+            cacheDir = context.getCacheDir();
+
         if(!cacheDir.exists())
-            cacheDir.mkdirs();
+            if (cacheDir.mkdirs())
+                Log.i(getClass().getSimpleName(), "directory created successfully");
     }
 
+    public String getPath(){
+        return cacheDir.getAbsolutePath();
+    }
     public File getFile(String url){
-        //I identify images by hashcode. Not a perfect solution, good for the demo.
-        String filename=String.valueOf(url.hashCode());
-        //Another possible solution (thanks to grantland)
-        //String filename = URLEncoder.encode(url);
-        File f = new File(cacheDir, filename);
-        return f;
 
+        String filename = String.format("%d_%d", url.length(), url.hashCode());
+        return new File(cacheDir, filename);
     }
 
     public void clear(){
-        File[] files=cacheDir.listFiles();
-        if(files==null)
+
+        File[] files = cacheDir.listFiles();
+
+        if(files == null)
             return;
-        for(File f:files)
-            f.delete();
+
+        for(File f:files) f.delete();
     }
 
 }
