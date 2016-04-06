@@ -23,32 +23,6 @@ public class Download implements Callable<Bitmap> {
         this.loader = loader;
     }
 
-//
-//    public Bitmap Load(){
-//
-//        File f = loader.FileCaching.getFile(uri);
-//
-//        try {
-//            Bitmap bitmap = null;
-//            URL imageUrl = new URL(this.uri);
-//            HttpURLConnection conn = (HttpURLConnection)imageUrl.openConnection();
-//            conn.setConnectTimeout(30000);
-//            conn.setReadTimeout(30000);
-//            conn.setInstanceFollowRedirects(true);
-//            InputStream is=conn.getInputStream();
-//            OutputStream os = new FileOutputStream(f);
-//            Utils.CopyStream(is, os);
-//            os.close();
-//            bitmap = loader.decodeFile(f);
-//            return bitmap;
-//        } catch (Throwable ex){
-//            ex.printStackTrace();
-//            if(ex instanceof OutOfMemoryError)
-//                loader.memoryCache.clear();
-//            return null;
-//        }
-//    }
-
     @Override
     public Bitmap call() throws Exception {
 
@@ -74,60 +48,4 @@ public class Download implements Callable<Bitmap> {
             return null;
         }
     }
-
-/*
-    class producer implements Runnable{
-
-
-        final consuming consuming;
-        producer(consuming consumer){
-            this.consuming = consumer;
-        }
-
-        @Override
-        public void run() {
-
-            File f = loader.FileCaching.getFile(uri);
-
-            //from web
-            try {
-                Bitmap bitmap = null;
-                URL imageUrl = new URL(uri);
-                HttpURLConnection conn = (HttpURLConnection)imageUrl.openConnection();
-                conn.setConnectTimeout(30000);
-                conn.setReadTimeout(30000);
-                conn.setInstanceFollowRedirects(true);
-                InputStream is = conn.getInputStream();
-                OutputStream os = new FileOutputStream(f);
-                Utils.CopyStream(is, os);
-                os.close();
-                bitmap = loader.decodeFile(f);
-                consuming.add(bitmap);
-            } catch (Throwable ex){
-                ex.printStackTrace();
-                if(ex instanceof OutOfMemoryError)
-                    loader.memoryCache.clear();
-            }
-
-        }
-    }
-
-    class consuming implements Callable<Bitmap> {
-
-        final BlockingQueue<Bitmap> queue = new LinkedBlockingQueue<>();
-
-        public void add(Bitmap bitmap){
-            try {
-                queue.put(bitmap);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public Bitmap call() throws Exception {
-            return queue.take();
-        }
-    }
-    */
 }
