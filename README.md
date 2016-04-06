@@ -156,7 +156,7 @@ Example:
 
 #### Add **aar** file locally  :
 
-- [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci.aar?raw=true) AAR File .
+- [Download](https://github.com/abbashosseini/Vinci/raw/master/Vinci-release.aar) AAR File .
 - _go to_ **File** > **New Module** > **Import .JAR or .AAR Package**
 - Imported and in **dependencies** add :
 
