@@ -70,6 +70,25 @@ public class Loader {
         return this;
     }
 
+    public Bitmap loadSynchronous(String url){
+
+        Bitmap bitmapDownloaded = null;
+        //from web if image not caching before
+        ExecutorService service = Executors.newCachedThreadPool();
+        Future<Bitmap> bitmapFuture = service.submit(new Download(url.toString(), this));
+        try {
+            bitmapDownloaded = bitmapFuture.get();
+            service.shutdown();
+            service.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(e.getClass().getSimpleName(), e.getMessage());
+        }
+
+        return bitmapDownloaded;
+
+    }
+
+
     public Loader load(String imageUrl){
 
         this.ImageUrl = imageUrl;
@@ -79,17 +98,7 @@ public class Loader {
     public String KeepIt(){
 
 
-        Bitmap bitmapFile = null;
-
-        ExecutorService service = Executors.newCachedThreadPool();
-        Future<Bitmap> bitmapFuture = service.submit(new Download(this.ImageUrl, this));
-        try {
-            bitmapFile = bitmapFuture.get();
-            service.shutdown();
-            service.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
-        } catch (InterruptedException | ExecutionException e) {
-            Log.e(e.getClass().getSimpleName(), e.getMessage());
-        }
+        Bitmap bitmapFile = loadSynchronous(this.ImageUrl);
 
         File fileDir = new File(android.os.Environment.getExternalStorageDirectory(),"Vinci/files");
         fileDir.mkdirs();
@@ -140,20 +149,8 @@ public class Loader {
         if(b!=null)
             return b;
 
-        //from web if image not caching before
 
-        ExecutorService service = Executors.newCachedThreadPool();
-        Future<Bitmap> bitmapFuture = service.submit(new Download(url, this));
-        try {
-            bitmapDownloaded = bitmapFuture.get();
-            service.shutdown();
-            service.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
-        } catch (InterruptedException | ExecutionException e) {
-            Log.e(e.getClass().getSimpleName(), e.getMessage());
-        }
-
-        return bitmapDownloaded;
-
+        return loadSynchronous(url);
     }
 
     //decodes image and scales it to reduce memory consumption
