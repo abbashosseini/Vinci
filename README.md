@@ -1,20 +1,12 @@
-# Vinci Library [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
+### Vinci Library For Image And File Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
->Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files and easy Internal Storage Task and get URI if you like Put it in databasec or just displayed on ImageView.
+>Vinci android library for Image Caching and Image Loading and its created multiThreading and make use of Concurrency for speedup the process
 
 ### About VinCi :
 
 ##### Min API 10+
 
-its android library its get _URL_ and valid one of cource and _download_ **image** also save it in internal storage and you can put it any where you like and  you can also save image in _database_ and you can retrieve image form database.
-i try make it simple to _work_ with **Images** and mess with images or convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all.
-
-#### Can Do :
-
-* you can use any URl from the net and use it in YOUR app just like that.
-* You can display you image you have ot user have on imageView.
-* Download any image with any **FORMAT** from  the net and put it in users device and use it or use it as Drawable , Files, ByteArray, Bitmap or vice versa .
-
+its android library its get _URL_ or _URLS_ from the net and its do this concurrency so no need be worry about sharing resource and its cache / Download the file Synchronously for Now Of Course and later i replace it with Asynchronous NetWorking and another thing Vinci can save file in internal storage and you can get full path and where file can you find and use it for example you can put path (URI) in _database_ and you can now retrieve URI/PATH form database.
 
 ####For Reading :
 
@@ -24,44 +16,34 @@ you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/Hexag
 
 ```java
 
-Load.ExecuteResult result = new Load.ExecuteResult() {
-	@Override
-	public void OnReady(byte[] byteArray) {
-	
-	    /*
-	    here can get image as byte array 
-	    */
-	
-	}
-};
+Vinci
+        .base(context)
+        .process()
+        .load(uri)
+        .putIn(viewHolder.imageView);
 
-Load.from(result).execute("URI");
-
-```
-
-* **Drawable** :
-```java
-
-  //and use it like this  With setImageDrawable :
-  
-  Drawable drawable = Vinci.base(context) 
-	  			/** 
-				* for converts file use TYPE() 
-				* for Storage actions use `storage()`
-				*/
-	  			.type()
-	  			.andDrawable(byteArray);
-  			
-  ImageView.setImageDrawable(drawable);
 ```
 
 * **Bitmap**:
 
 ```java
   
-  Bitmap bitmap = Vinci.base(context).type().andBitmap(/*Drawable*/);
-  
-  ImageView.setImageBitmap(bitmap);
+  // #1 get Bitmap From URI
+ Bitmap bitmap = Vinci
+                .base(context)
+                .process()
+                .loadSynchronous(uri);
+
+viewHolder.imageView.setImageBitmap(bitmap);
+        
+//  #2 get Bitmap from File
+
+Bitmap bitmap = Vinci
+                .base(context)
+                .process()
+                .decodeFile(file);
+
+viewHolder.Writer.setImageBitmap(bitmap);
   
 ```
 
@@ -71,33 +53,15 @@ Store a **Files**  into **internalStorage**:
 
 ```java
 
-  	String PathOnStorage  = Vinci.base(getContext).storage().into(
-  	
-  			/*pass your URI contain image files as String you want here With extension*/
-  			uriToString, 
-  			
-  			/* if you not like default PATH  /storage/emulated/0/Vinci/Pictures  change it here*/
-  			"", 
-  			
-  			/* in this one you set quality and size image 
-  			   if you added 10, all images will store with 
-  			   orginal size BUT
-  			   if you add less then 10 images become less quality
-  			   and size then orginal one .*/
-  			0
-  		);
+String image = Vinci
+		        .base(context)
+		        .process()
+		        .KeepIt();
 
+Log.i(getClass().getSimpleName(), image);
 ```
 
-Retrive a **File** From **internalStorage**:
-```java
-
-  	Drawable drawable = Vinci.base(getContext).storage().from(/*PATH*/);
-  	imageView.setImageDrawable(drawable);
-
-```
-
-#### for multiThread, Concurrency and Safety you can use `SafeList` for more then one file :
+#### for safe list/Collection you can use`SafeList` :
 
 ```java
 
@@ -106,8 +70,6 @@ SafeList<Object> list = new SafeList<>();
 list.prepend(/* Objects */);
 //take objects
 list.top(/* get Objects */);
-
-	
 
 ```
 
@@ -156,17 +118,15 @@ Example:
   ```gradle
 	  allprojects {
 		repositories {
-			...
-			// In Build.gradle in Root Folder
 			maven { url "https://jitpack.io" }
 		}
 	}
 ```
 ```gradle	
-	// In Build.gradle in App Folder
 	dependencies {
-	        compile 'com.github.abbashosseini:Vinci:ed6b74ebcc'
+	        compile 'com.github.abbashosseini:Vinci:-SNAPSHOT'
 	}
+
   
   ````
   
@@ -174,7 +134,7 @@ Example:
 
 ```xml
 	<!-- Step One  -->
-	<repositories>
+		<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
@@ -182,12 +142,13 @@ Example:
 	</repositories>
 	
 	<!-- Step TWO  -->
-	
 	<dependency>
 	    <groupId>com.github.abbashosseini</groupId>
 	    <artifactId>Vinci</artifactId>
-	    <version>ed6b74ebcc</version>
+	    <version>-SNAPSHOT</version>
 	</dependency>
+
+
 
 ```
 
