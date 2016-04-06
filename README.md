@@ -1,13 +1,12 @@
-# Vinci Library [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
+### Vinci Library For Image And File Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
->Vinci android library for work and convert Images into Drawable, byteArray, Bitmap, Files and easy Internal Storage Task and get URI if you like Put it in databasec or just displayed on ImageView.
+>Vinci android library for Image Caching and Image Loading and its created multiThreading and make use of Concurrency for speedup the process
 
 ### About VinCi :
 
 ##### Min API 10+
 
-its android library its get _URL_ and valid one of cource and _download_ **image** also save it in internal storage and you can put it any where you like and  you can also save image in _database_ and you can retrieve image form database.
-i try make it simple to _work_ with **Images** and mess with images or convert it in ByteArray, Drawable, Bitmap and **ICON** but added in later and VinCi not try to say saving your Images in database is *good practice* _NO_ at all.
+its android library its get _URL_ or _URLS_ from the net and its do this concurrency so no need be worry about shareing resouce and its cache / Download the file Sychronouslly for Now Of Course and later i replace it with Asychronous NetWorking and another thing Vinci can save file in internal storage and you can get full path and where file can you find and use it for example you can put path (URI) in _database_ and you can now retrieve URI/PATH form database.
 
 #### Can Do :
 
