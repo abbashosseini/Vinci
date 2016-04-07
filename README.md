@@ -53,12 +53,13 @@ Store a **Files**  into **internalStorage**:
 
 ```java
 
-String image = Vinci
+String imagePath = Vinci
 		        .base(context)
 		        .process()
+		        .load(uri)
 		        .KeepIt();
 
-Log.i(getClass().getSimpleName(), image);
+Log.i(getClass().getSimpleName(), imagePath);
 ```
 
 #### for safe list/Collection you can use`SafeList` :
