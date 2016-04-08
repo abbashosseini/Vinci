@@ -1,15 +1,13 @@
 package mklib.hosseini.com.vinci.Classes;
 
-import java.io.File;
-import java.net.URI;
-import java.net.URLEncoder;
-
 import android.content.Context;
 import android.util.Log;
 
+import java.io.File;
+
 public class FileCaching {
 
-    private File cacheDir;
+    private final File cacheDir;
 
     public FileCaching(Context context){
 
@@ -25,13 +23,19 @@ public class FileCaching {
                 Log.i(getClass().getSimpleName(), "directory created successfully");
     }
 
-    public String getPath(){
-        return cacheDir.getAbsolutePath();
-    }
+
     public File getFile(String url){
 
         String filename = String.format("%d_%d", url.length(), url.hashCode());
         return new File(cacheDir, filename);
+    }
+
+    protected boolean remove(String uri){
+
+        String filename = String.format("%d_%d", uri.length(), uri.hashCode());
+        File file = new File(cacheDir, filename);
+        return file.exists() && file.delete();
+
     }
 
     public void clear(){
@@ -41,7 +45,9 @@ public class FileCaching {
         if(files == null)
             return;
 
-        for(File f:files) f.delete();
+        for(File f:files)
+            if (f.delete())
+                Log.i(getClass().getSimpleName(), String.format("file with %s name are deleted.", f.getName()));
     }
 
 }

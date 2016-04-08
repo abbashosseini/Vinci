@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -42,27 +43,6 @@ public class Loader {
         fileCache = new FileCaching(context);
         executorService = Executors.newFixedThreadPool(10);
 
-//        if (!isNetworkOnline()) {
-//            throw new IllegalAccessError("Network Connection, make sure you have correct connection !! ");
-//        }
-    }
-
-    private boolean isNetworkOnline() {
-
-        boolean status = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = connectivityManager.getNetworkInfo(0);
-
-        if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
-            status= true;
-        }
-
-        else {
-            netInfo = connectivityManager.getNetworkInfo(1);
-            if(netInfo!=null && netInfo.getState()==NetworkInfo.State.CONNECTED)
-                status= true;
-        }
-        return status;
     }
 
     public Loader error(int drawable){
@@ -70,12 +50,16 @@ public class Loader {
         return this;
     }
 
+    public boolean remove(String Url){
+        return fileCache.remove(Url);
+    }
+
     public Bitmap loadSynchronous(String url){
 
         Bitmap bitmapDownloaded = null;
         //from web if image not caching before
         ExecutorService service = Executors.newCachedThreadPool();
-        Future<Bitmap> bitmapFuture = service.submit(new Download(url.toString(), this));
+        Future<Bitmap> bitmapFuture = service.submit(new Download(url, this, mContext));
         try {
             bitmapDownloaded = bitmapFuture.get();
             service.shutdown();
@@ -88,6 +72,10 @@ public class Loader {
 
     }
 
+    public File RetriveCacheFile(String imageUrl){
+
+        return fileCache.getFile(imageUrl);
+    }
 
     public Loader load(String imageUrl){
 
@@ -95,7 +83,7 @@ public class Loader {
         return this;
     }
 
-    public String KeepIt(){
+    public synchronized String KeepIt(){
 
 
         Bitmap bitmapFile = loadSynchronous(this.ImageUrl);
@@ -120,7 +108,7 @@ public class Loader {
 
     }
 
-    public void putIn(ImageView imageView) {
+    public void view(ImageView imageView) {
 
         imageViews.put(imageView, ImageUrl);
         Bitmap bitmap = memoryCache.get(ImageUrl);
@@ -141,7 +129,6 @@ public class Loader {
     }
 
     public Bitmap getBitmap(String url) {
-        Bitmap bitmapDownloaded = null;
         File f = fileCache.getFile(url);
 
         //from SD cache
@@ -178,12 +165,12 @@ public class Loader {
 
             //decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize=scale;
+            o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
             Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
         }
-        return null;
+        return (Bitmap)null;
     }
 
     protected boolean getFromCaching(Item item){

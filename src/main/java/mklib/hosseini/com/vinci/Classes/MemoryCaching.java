@@ -31,7 +31,8 @@ public class MemoryCaching {
         try{
             if(!cache.containsKey(id))
                 return null;
-            //NullPointerException sometimes happen here http://code.google.com/p/osmdroid/issues/detail?id=78
+            //NullPointerException sometimes happen here
+            // http://code.google.com/p/osmdroid/issues/detail?id=78
             return cache.get(id);
         }catch(NullPointerException ex){
             ex.printStackTrace();
