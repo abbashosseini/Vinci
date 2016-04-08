@@ -53,12 +53,13 @@ Store a **Files**  into **internalStorage**:
 
 ```java
 
-String image = Vinci
+String imagePath = Vinci
 		        .base(context)
 		        .process()
+		        .load(uri)
 		        .KeepIt();
 
-Log.i(getClass().getSimpleName(), image);
+Log.i(getClass().getSimpleName(), imagePath);
 ```
 
 #### for safe list/Collection you can use`SafeList` :
@@ -156,7 +157,7 @@ Example:
 
 #### Add **aar** file locally  :
 
-- [Download](https://github.com/abbashosseini/Vinci/blob/master/Vinci.aar?raw=true) AAR File .
+- [Download](https://github.com/abbashosseini/Vinci/raw/master/Vinci-release.aar) AAR File .
 - _go to_ **File** > **New Module** > **Import .JAR or .AAR Package**
 - Imported and in **dependencies** add :
 
