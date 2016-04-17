@@ -3,7 +3,6 @@ package mklib.hosseini.com.vinci.Classes;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.AtomicFile;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -67,8 +66,8 @@ public class Loader implements Request {
         return this;
     }
 
-    public FileMaking file() {
-        return new FileMaking(this);
+    public Storage file() {
+        return new Storage(this);
     }
 
     public void view(ImageView imageView) {
@@ -155,7 +154,7 @@ public class Loader implements Request {
     }
 
     public void clearFiles(){
-        FileMaking cls = new FileMaking(this);
+        Storage cls = new Storage(this);
         cls.clear();
     }
 
