@@ -12,9 +12,9 @@ class bitmapHunter implements Runnable {
     final Item item;
     final Loader loader;
 
-    public bitmapHunter(Bitmap bitmapParam, Item itemForTask, Loader loader){
-        this.bitmap = bitmapParam;
-        this.item = itemForTask;
+    public bitmapHunter(Bitmap bitmap, Item item, Loader loader){
+        this.bitmap = bitmap;
+        this.item = item;
         this.loader = loader;
     }
 
@@ -27,6 +27,6 @@ class bitmapHunter implements Runnable {
             item.imageView.setImageBitmap(bitmap);
 
         else
-            item.imageView.setImageResource(loader.displayDefualtDawable);
+            item.imageView.setImageResource(loader.displayDefualtDawable.get());
     }
 }

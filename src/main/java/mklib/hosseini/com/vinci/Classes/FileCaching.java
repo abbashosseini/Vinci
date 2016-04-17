@@ -24,16 +24,14 @@ public class FileCaching {
     }
 
 
-    public File getFile(String url){
+    public final File getFile(String url){
 
-        String filename = String.format("%d_%d", url.length(), url.hashCode());
-        return new File(cacheDir, filename);
+        return new File(cacheDir, String.format("%d_%d", url.length(), url.hashCode()));
     }
 
     protected boolean remove(String uri){
 
-        String filename = String.format("%d_%d", uri.length(), uri.hashCode());
-        File file = new File(cacheDir, filename);
+        File file = new File(cacheDir, String.format("%d_%d", uri.length(), uri.hashCode()));
         return file.exists() && file.delete();
 
     }

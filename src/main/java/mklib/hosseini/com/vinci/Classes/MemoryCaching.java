@@ -53,7 +53,7 @@ public class MemoryCaching {
     }
 
     private void checkSize() {
-        Log.i(TAG, String.format("cache size = %d, length = %d", size.get(), cache.size()));
+//        Log.i(TAG, String.format("cache size = %d, length = %d", size.get(), cache.size()));
 
         if(size.get() > limit.get()){
             //least recently accessed item will be the first one iterated
