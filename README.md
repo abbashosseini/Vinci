@@ -1,4 +1,4 @@
-### Vinci Library For Image And File Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
+### Vinci Library For Image Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
 >Vinci android library for Image Caching and Image Loading and its created multiThreading and make use of Concurrency for speedup the process
 
@@ -16,11 +16,11 @@ you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/Hexag
 
 ```java
 
-Vinci
-        .base(context)
-        .process()
-        .load(uri)
-        .putIn(viewHolder.imageView);
+        Vinci
+            .base(context)
+            .process()
+            .load(uri)
+            .view(viewHolder.image);
 
 ```
 
@@ -29,12 +29,23 @@ Vinci
 ```java
   
   // #1 get Bitmap From URI
- Bitmap bitmap = Vinci
-                .base(context)
-                .process()
-                .loadSynchronous(uri);
+  Vinci
+           .base(context)
+           .process()
+           .load(uri, new Request() {
+	               @Override
+	               public void onSuccess(Bitmap bitmap) {
+	                   viewHolder.image.setImageBitmap(bitmap);
+	               }
+	
+	               @Override
+	               public void onFailure(Throwable e) {
+	                   Log.e(e.getClass().getSimpleName(), e.getMessage());
+	
+	               }
+	           });
 
-viewHolder.imageView.setImageBitmap(bitmap);
+
         
 //  #2 get Bitmap from File
 
