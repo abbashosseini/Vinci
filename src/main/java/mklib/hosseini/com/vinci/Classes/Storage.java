@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * with thi sclass you can created file and get info from paths or files
  */
 
-public class FileMaking{
+public class Storage {
 
     private final File filesDir;
     private final boolean isCreated;
@@ -21,7 +21,7 @@ public class FileMaking{
     private final Logger logger = Logger.getLogger(getClass().getSimpleName());
     private final File fileImage;
 
-    public FileMaking(Loader loader){
+    public Storage(Loader loader){
 
         this.loader = loader;
 
