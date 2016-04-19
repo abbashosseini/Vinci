@@ -12,8 +12,6 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 
 you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
 
-* **Download** :
-
 ```java
 
         Vinci
