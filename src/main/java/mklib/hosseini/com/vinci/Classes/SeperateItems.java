@@ -19,13 +19,13 @@ class SeperateItems implements Runnable {
     @Override
     public void run() {
 
-        if(loader.getFromCaching(item))
+        if(loader.fromCaching(item))
             return;
 
         Bitmap bmp = loader.getBitmap(item.url);
         loader.memoryCache.put(item.url, bmp);
 
-        if(loader.getFromCaching(item))
+        if(loader.fromCaching(item))
             return;
 
         bitmapHunter bd = new bitmapHunter(bmp, item, loader);

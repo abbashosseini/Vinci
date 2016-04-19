@@ -19,18 +19,62 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import mklib.hosseini.com.vinci.R;
 
+/**
+
+* <p>
+*   with this class you can access methods and api like Builder pattern style
+* </p>
+*
+* @author      Abbas hosseini
+* @version     1.0
+* @since       2016-04-18
+*
+**/
+
+
 public class Loader implements Request {
 
+
+    /**
+    * keep the imageViews object and ful uri for later
+    **/
     private final Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+
+    /**
+    * ThreadPool and threadSafe one to execute Runnable's
+    **/
     private final ExecutorService executorService;
     private final Context mContext;
     public final AtomicInteger displayDefualtDawable = new AtomicInteger(R.drawable.fail);
+
+
+    /**
+    * store http url in this var for later
+    * @see #load(String)
+    **/
     public static String ImageUrl;
+
+    /**
+     * store http url in this var for later
+     * @see #load(String)
+     **/
     final MemoryCaching memoryCache = new MemoryCaching();
+
+    /**
+     * access the file are caching and cache any images you want
+     * @see FileCaching
+     **/
     final FileCaching fileCache;
+
+    // not safe for now
     Bitmap BitmapCompress;
 
-
+    /**
+     * @param context
+     *              get context you need from super class
+     *
+     * @see mklib.hosseini.com.vinci.Vinci#base(Context)
+     * */
     public Loader(Context context) {
 
         this.mContext = context;
@@ -39,11 +83,21 @@ public class Loader implements Request {
 
     }
 
+    /**
+     * set drawable if any thing goes wrong and
+     * app don't able to display the particular
+     * its display this drawable
+     * */
     public Loader error(int drawable) {
         displayDefualtDawable.set(drawable);;
         return this;
     }
 
+    /**
+     * if you want get bitmap from http u[rl and
+     * do something Vinci not do it for youm you
+     * can use this method
+     **/
     public void load(String url, Request request) {
 
         //from web if image not found in cache folder
@@ -60,16 +114,35 @@ public class Loader implements Request {
 
     }
 
+    /**
+     * just pass http url and then you have to call view(ImageView)
+     * @see #view(ImageView)
+     **/
     public Loader load(String imageUrl) {
 
         ImageUrl = imageUrl;
         return this;
     }
 
+    /**
+     * access folder and file you are save in files folder and
+     * you can do any thing with it create, delete, retrive file
+     * as bitmap and more
+     *
+     * @see Storage
+     **/
     public Storage file() {
         return new Storage(this);
     }
 
+    /**
+     * set the images to imageView your gonna pass to this method
+     *
+     * @param imageView
+     *              get particulat ImageView object
+     *              and cache it and then get bitmap
+     *              from memory base on ImageView Object
+     **/
     public void view(ImageView imageView) {
 
         imageViews.put(imageView, ImageUrl);
@@ -80,16 +153,32 @@ public class Loader implements Request {
 
         else {
 
-            queuePhoto(ImageUrl, imageView);
+            photoRows(ImageUrl, imageView);
             imageView.setImageResource(displayDefualtDawable.get());
         }
     }
 
-    private void queuePhoto(String url, ImageView imageView) {
+    /**
+     * create every item separete from others item to make sure
+     * items are correct and safe and add concurrency to it to
+     * make it faster
+     *
+     * @see #imageViews
+     * @see Item
+     **/
+    private void photoRows(String url, ImageView imageView) {
         Item item = new Item(url, imageView);
         executorService.submit(new SeperateItems(item, this));
     }
 
+    /**
+     * get bitmap from cache folder
+     * or can't find it then get it
+     * from web Asynchorounsly
+     *
+     * @see #load(String, Request)
+     * @see Request
+     **/
     public Bitmap getBitmap(String url) {
         File f = fileCache.getFile(url);
 
@@ -138,31 +227,47 @@ public class Loader implements Request {
             options.inSampleSize = 1;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, options);
         } catch (FileNotFoundException e) {
-//            Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
+            Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
         }
         return null;
     }
 
-    public boolean getFromCaching(Item item) {
+    /**
+     * search files/cache folder and memory cache
+     **/
+    public boolean fromCaching(Item item) {
         String tag = imageViews.get(item.imageView);
         return tag == null || !tag.equals(item.url);
     }
 
+    /**
+     * delete all caching included temp files(cache folder) and mempry cache
+     **/
     public void clearCache() {
         memoryCache.clear();
         fileCache.clear();
+
     }
 
-    public void clearFiles(){
+    /**
+     * delete all files your save/store in ./Vinci/Files
+     */
+    public void deleteStoreFiles(){
         Storage cls = new Storage(this);
-        cls.clear();
+        cls.deleteAll();
     }
 
+    /**
+     *  in here you can get bitmap Asynchronously
+     **/
     @Override
     public synchronized void onSuccess(final Bitmap bitmap) {
         BitmapCompress = bitmap;
     }
 
+    /**
+     *  in here you can get Exceptions Asynchronously
+     **/
     @Override
     public void onFailure(Throwable e) {
 

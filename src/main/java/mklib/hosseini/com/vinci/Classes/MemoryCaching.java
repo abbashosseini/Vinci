@@ -14,31 +14,85 @@ public class MemoryCaching {
 
     private static final String TAG = MemoryCaching.class.getSimpleName();
     private static final Map<String, Bitmap> cache = Collections.synchronizedMap(new LinkedHashMap<String, Bitmap>(10,1.5f,true));
-    private static final AtomicLong size = new AtomicLong(0); //current size
-    private static final AtomicLong limit = new AtomicLong(1000000); //max memory in bytes
 
+    /**
+    *  current size
+    **/
+    private static final AtomicLong size = new AtomicLong(0);
+
+    /**
+    *  max memory in bytes
+    **/
+    private static final AtomicLong limit = new AtomicLong(1000000);
+
+    /**
+    * use 25% of heap
+    **/
     public MemoryCaching(){
-        //use 25% of available heap size
         setLimit(Runtime.getRuntime().maxMemory() / 4);
     }
 
-    public void setLimit(final long new_limit){
-        limit.set(new_limit);
-        Log.i(TAG,String.format("MemoryCaching will use up to %s MB", limit.get()/1024./1024));
+
+    /**
+     * <p>
+     *     apply limition to caching task and let him know how many MegByte have
+     *     and its make running the tsk and do caching more sefe
+     * </p>
+     *
+     * @see         #limit
+     * @since       2016-04-18
+     * @param limit
+     *              you can apply limition
+     *              to caching and dot allow
+     *              OOM Exception happen
+     **/
+    public void setLimit(final long limit){
+        MemoryCaching.limit.set(limit);
+        Log.i(TAG,String.format("MemoryCaching will use up to %s MB", MemoryCaching.limit.get()/1024./1024));
     }
 
+    /**
+     * <p>
+     *     of course get Bitmap from cache file and its by defualt
+     *     vinci caching file /storage/emulated/(int)/Vinci/cache
+     *     and its get appropriate item from Map(cache)
+     * </p>
+     *
+     * @see         FileCaching#
+     * @see         #limit
+     * @since       2016-04-18
+     * @param       id
+     *                  through this pass you get http full url
+     *                  and since its particular you are safe to
+     *                  use this method
+     **/
     public Bitmap get(String id){
         try{
             if(!cache.containsKey(id))
                 return null;
             //NullPointerException sometimes happen here
-            // http://code.google.com/p/osmdroid/issues/detail?id=78
+            //http://code.google.com/p/osmdroid/issues/detail?id=78
             return cache.get(id);
         }catch(NullPointerException ex){
             ex.printStackTrace();
             return null;
         }
     }
+
+    /**
+     * <p>
+     *     create/save images in memory for later use
+     *     and retrive images as object from Map(cache)
+     * </p>
+     *
+     * @see         #cache
+     * @see         #limit
+     * @since       2016-04-18
+     * @param       id
+     *                  you can apply limition
+     *                  to caching and dot allow
+     *                  OOM Exception happen
+     **/
 
     public void put(String id, Bitmap bitmap){
         try{
@@ -53,7 +107,7 @@ public class MemoryCaching {
     }
 
     private void checkSize() {
-//        Log.i(TAG, String.format("cache size = %d, length = %d", size.get(), cache.size()));
+        Log.i(TAG, String.format("cache size = %d, length = %d", size.get(), cache.size()));
 
         if(size.get() > limit.get()){
             //least recently accessed item will be the first one iterated
@@ -73,6 +127,9 @@ public class MemoryCaching {
         }
     }
 
+    /*
+    * deleteAll memory
+    * */
     public void clear() {
         try{
             //NullPointerException sometimes happen here http://code.google.com/p/osmdroid/issues/detail?id=78

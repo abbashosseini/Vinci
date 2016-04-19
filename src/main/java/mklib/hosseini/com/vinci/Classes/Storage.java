@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.logging.Logger;
 
 /**
- * with thi sclass you can created file and get info from paths or files
+ * with this sclass you can created file and get info from paths or files
  */
 
 public class Storage {
@@ -52,7 +52,6 @@ public class Storage {
 
     }
 
-
     public File FileObject(){
         return fileImage;
     }
@@ -81,7 +80,7 @@ public class Storage {
         return URI.create(filesDir.getAbsoluteFile().getAbsolutePath());
     }
 
-    public void clear(){
+    public void deleteAll(){
 
         File[] files = filesDir.listFiles();
 

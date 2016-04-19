@@ -3,9 +3,16 @@ package mklib.hosseini.com.vinci.Classes;
 import android.graphics.Bitmap;
 
 /**
- * Created by abbas on 4/5/16.
- */
-//Used to display bitmap in the UI thread
+* <p>
+*   Used to display bitmap in the UI threa 
+* </p>
+*
+* @author      Abbas hosseini
+* @version     1.0
+* @since       2016-04-18
+*
+**/
+
 class bitmapHunter implements Runnable {
 
     final Bitmap bitmap;
@@ -20,7 +27,7 @@ class bitmapHunter implements Runnable {
 
     public void run() {
 
-        if(loader.getFromCaching(item))
+        if(loader.fromCaching(item))
             return;
 
         if(bitmap != null)
