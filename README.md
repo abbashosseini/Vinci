@@ -64,13 +64,13 @@ Store a **Files**  into **internalStorage**:
 
 ```java
 
-String imagePath = Vinci
-		        .base(context)
-		        .process()
-		        .load(uri)
-		        .KeepIt();
+Storage store = Vinci.base(context).process().load(uri).file();
 
-Log.i(getClass().getSimpleName(), imagePath);
+Log.e("Created", Boolean.toString(store.isCreated()));
+Log.e("FileObject", store.FileObject().toString());
+Log.e("FullPath", store.getfullPath().getPath());
+Log.e("LocalPath", store.LocalPath());
+Log.e("Get Bitmap File", String.valueOf(store.getBitmap()));
 ```
 
 #### for safe list/Collection you can use`SafeList` :
