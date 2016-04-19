@@ -16,14 +16,14 @@ import java.net.URL;
 /**
  * Created by abbas on 4/5/16.
  */
-public class Download implements Runnable {
+public class downloadRequest implements Runnable {
 
     private final String uri;
     private final Loader loader;
     private final Context context;
     public final Request request;
 
-    public Download(
+    public downloadRequest(
             String uri,
             Loader loader,
             Context context,
