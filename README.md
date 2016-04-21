@@ -1,6 +1,6 @@
 ### Vinci Library For Image Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
-> Vinci android library for Image Caching and Image Loading and its created multiThreading and make use of Concurrency for speedup the process for more read [WIKI](https://github.com/abbashosseini/Vinci/wiki)
+> Vinci android library for Image Caching and Image Loading and its support multiThreading and make use of Concurrency for speedup the process for more, read [WIKI](https://github.com/abbashosseini/Vinci/wiki)
 
 ### About VinCi :
 
