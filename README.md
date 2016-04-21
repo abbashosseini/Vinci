@@ -1,6 +1,6 @@
 ### Vinci Library For Image Caching and Image loading [![](https://jitpack.io/v/abbashosseini/Vinci.svg)](https://jitpack.io/#abbashosseini/Vinci)
 
->Vinci android library for Image Caching and Image Loading and its created multiThreading and make use of Concurrency for speedup the process
+> Vinci android library for Image Caching and Image Loading and its support multiThreading and make use of Concurrency for speedup the process for more, read [WIKI](https://github.com/abbashosseini/Vinci/wiki)
 
 ### About VinCi :
 
@@ -8,119 +8,6 @@
 
 its android library its get _URL_ or _URLS_ from the net and its do this concurrency so no need be worry about sharing resource and its cache / Download the file Synchronously for Now Of Course and later i replace it with Asynchronous NetWorking and another thing Vinci can save file in internal storage and you can get full path and where file can you find and use it for example you can put path (URI) in _database_ and you can now retrieve URI/PATH form database.
 
-####For Reading :
-
-you can display your **Photo** in ImageView/CustomImageView _(RoundedImage/HexagonImage)_ like this :
-
-* **Download** :
-
-```java
-
-        Vinci
-            .base(context)
-            .process()
-            .load(uri)
-            .view(viewHolder.image);
-
-```
-
-* **Bitmap**:
-
-```java
-  
-  // #1 get Bitmap From URI
-  Vinci
-           .base(context)
-           .process()
-           .load(uri, new Request() {
-	               @Override
-	               public void onSuccess(Bitmap bitmap) {
-	                   viewHolder.image.setImageBitmap(bitmap);
-	               }
-	
-	               @Override
-	               public void onFailure(Throwable e) {
-	                   Log.e(e.getClass().getSimpleName(), e.getMessage());
-	
-	               }
-	           });
-
-
-        
-//  #2 get Bitmap from File
-
-Bitmap bitmap = Vinci
-                .base(context)
-                .process()
-                .decodeFile(file);
-
-viewHolder.Writer.setImageBitmap(bitmap);
-  
-```
-
-
-
-Store a **Files**  into **internalStorage**:
-
-```java
-
-String imagePath = Vinci
-		        .base(context)
-		        .process()
-		        .load(uri)
-		        .KeepIt();
-
-Log.i(getClass().getSimpleName(), imagePath);
-```
-
-#### for safe list/Collection you can use`SafeList` :
-
-```java
-
-SafeList<Object> list = new SafeList<>();
-//add objects
-list.prepend(/* Objects */);
-//take objects
-list.top(/* get Objects */);
-
-```
-
-
-### ScreenShot and Custom ImageView:
-
-- [x] You can Use **HexagonImage** Class : <br/>
-Example:
-  ```xml
-    <mklib.hosseini.com.vinci.Shapes.HexagonImage
-    android:layout_height="120sp"
-    android:layout_width="120sp"
-    android:id="@+id/Axkarbar"
-    android:layout_gravity="center"
-    android:scaleType="centerCrop"
-    android:padding="4dp"
-  
-      />
-```
-  ![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/P.jpg)
-
-- [x] You can Use **RoundedImage** Class : <br/>
-
-Example:
-	
-```xml
-	      <mklib.hosseini.com.vinci.Shapes.RoundedImage
-	      android:layout_height="120sp"
-	      android:layout_width="120sp"
-	      android:id="@+id/ID"
-	      android:layout_gravity="center"
-	      android:scaleType="centerCrop"
-	      android:padding="4dp"
-	      
-	      />
-```
-
-![ScreenShot](https://github.com/abbashosseini/Vinci/blob/master/Image/L.jpg)
-  
   
 ####Gradle:
   
