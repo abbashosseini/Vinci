@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -102,7 +100,7 @@ public class Loader implements Request {
 
         //from web if image not found in cache folder
         ExecutorService service = Executors.newCachedThreadPool();
-        service.execute(new Download(url, this, mContext, request));
+        service.execute(new downloadRequest(url, this, mContext, request));
 
         try {
             service.shutdown();
@@ -134,6 +132,19 @@ public class Loader implements Request {
     public Storage file() {
         return new Storage(this);
     }
+
+
+    /**
+     * access folder and file you are save in files folder and
+     * you can do any thing with it create, delete, retrive file
+     * as bitmap and more
+     *
+     * @see Storage
+     **/
+    public Files files() {
+        return new Files();
+    }
+
 
     /**
      * set the images to imageView your gonna pass to this method
@@ -194,9 +205,9 @@ public class Loader implements Request {
     }
 
     //decodes image and scales it to reduce memory consumption
-    public Bitmap decodeFile(File f) {
+    public Bitmap decodeFile(File file) {
 
-        try {
+//        try {
             //decode image size
 //            BitmapFactory.Options option = new BitmapFactory.Options();
 //            option.inJustDecodeBounds = true;
@@ -225,11 +236,21 @@ public class Loader implements Request {
             //decode with inSampleSize
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 1;
-            return BitmapFactory.decodeStream(new FileInputStream(f), null, options);
-        } catch (FileNotFoundException e) {
-            Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
-        }
-        return null;
+            return BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+//            return BitmapFactory.decodeStream(new FileInputStream(f), null, options);
+//        } catch (FileNotFoundException e) {
+//            Log.e(e.getClass().getSimpleName(), e.getMessage(), e);
+//        }
+//        return null;
+    }
+
+    //decodes image and scales it to reduce memory consumption
+    public void decodeFile(File file, AsyncBitmap<Bitmap> bitmapAsynchBitmap) {
+
+        //decode with inSampleSize
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 1;
+            bitmapAsynchBitmap.onFinish(BitmapFactory.decodeFile(file.getAbsolutePath(), options));
     }
 
     /**
@@ -258,7 +279,7 @@ public class Loader implements Request {
     }
 
     /**
-     *  in here you can get bitmap Asynchronously
+     *  in here you can get bitmap AsyncBitmap
      **/
     @Override
     public synchronized void onSuccess(final Bitmap bitmap) {
@@ -266,7 +287,7 @@ public class Loader implements Request {
     }
 
     /**
-     *  in here you can get Exceptions Asynchronously
+     *  in here you can get Exceptions AsyncBitmap
      **/
     @Override
     public void onFailure(Throwable e) {

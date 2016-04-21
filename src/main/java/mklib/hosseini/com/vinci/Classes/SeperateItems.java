@@ -29,7 +29,7 @@ class SeperateItems implements Runnable {
             return;
 
         bitmapHunter bd = new bitmapHunter(bmp, item, loader);
-        Activity a =(Activity) item.imageView.getContext();
+        Activity a = (Activity) item.imageView.getContext();
         a.runOnUiThread(bd);
     }
 }

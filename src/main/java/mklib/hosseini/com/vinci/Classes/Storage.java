@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -27,7 +29,7 @@ public class Storage {
 
         this.loader.load(Loader.ImageUrl, loader);
 
-        filesDir = new File(android.os.Environment.getExternalStorageDirectory(), "Vinci/files");
+        filesDir = LocalPath();
         if (filesDir.mkdirs())
             logger.info(String.format("%s path is created ", filesDir.getAbsolutePath()));
         else
@@ -56,8 +58,8 @@ public class Storage {
         return fileImage;
     }
 
-    public String LocalPath(){
-        return fileImage.getAbsolutePath();
+    public static File LocalPath(){
+        return new File(android.os.Environment.getExternalStorageDirectory(), "Vinci/files");
     }
 
     public boolean remove(){
