@@ -24,7 +24,7 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 ```
 ```gradle	
 	dependencies {
-	        compile 'com.github.abbashosseini:Vinci:c812e210a2'
+	        compile 'com.github.abbashosseini:Vinci:aar'
 	}
 
   
@@ -42,10 +42,10 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 	</repositories>
 	
 	<!-- Step TWO  -->
-       	<dependency>
+	<dependency>
 	    <groupId>com.github.abbashosseini</groupId>
 	    <artifactId>Vinci</artifactId>
-	    <version>c812e210a2</version>
+	    <version>aar</version>
 	</dependency>
 
 
