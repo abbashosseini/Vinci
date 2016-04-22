@@ -15,15 +15,16 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
   
   
   ```gradle
-	  allprojects {
+	allprojects {
 		repositories {
+			...
 			maven { url "https://jitpack.io" }
 		}
 	}
 ```
 ```gradle	
 	dependencies {
-	        compile 'com.github.abbashosseini:Vinci:-SNAPSHOT'
+	        compile 'com.github.abbashosseini:Vinci:c812e210a2'
 	}
 
   
@@ -33,7 +34,7 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 
 ```xml
 	<!-- Step One  -->
-		<repositories>
+	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
@@ -41,15 +42,17 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 	</repositories>
 	
 	<!-- Step TWO  -->
-	<dependency>
+       	<dependency>
 	    <groupId>com.github.abbashosseini</groupId>
 	    <artifactId>Vinci</artifactId>
-	    <version>-SNAPSHOT</version>
+	    <version>c812e210a2</version>
 	</dependency>
 
 
 
 ```
+
+
 
 #OR
 
