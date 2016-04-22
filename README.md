@@ -58,7 +58,7 @@ its android library its get _URL_ or _URLS_ from the net and its do this concurr
 
 #### Add **aar** file locally  :
 
-- [Download](https://github.com/abbashosseini/Vinci/raw/master/Vinci-release.aar) AAR File .
+- [Download](https://github.com/abbashosseini/Vinci/releases/download/aarFile/Vinci-release.aar) AAR File .
 - _go to_ **File** > **New Module** > **Import .JAR or .AAR Package**
 - Imported and in **dependencies** add :
 
