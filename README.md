@@ -4,7 +4,8 @@
 
 ### About VinCi :
 <p align="center">
-<img src="https://github.com/abbashosseini/Vinci/blob/master/ScreenShot/one.png"/>
+<img src="https://github.com/abbashosseini/Vinci/blob/master/ScreenShot/P.jpg"/>
+<img src="https://github.com/abbashosseini/Vinci/blob/master/ScreenShot/L.jpg"/>
 </p>
 
 ##### Min API 10+
