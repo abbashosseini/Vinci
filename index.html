@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Vinci by abbashosseini</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Vinci</h1>
+        <h2>Vinci android library  :art:</h2>
+        <a href="https://github.com/abbashosseini/Vinci" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+<a id="vinci-library-for-image-caching-and-image-loading-" class="anchor" href="#vinci-library-for-image-caching-and-image-loading-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vinci Library For Image Caching and Image loading <a href="https://jitpack.io/#abbashosseini/Vinci"><img src="https://jitpack.io/v/abbashosseini/Vinci.svg" alt=""></a>
+</h3>
+
+<blockquote>
+<p>Vinci android library for Image Caching and Image Loading and its support multiThreading and make use of Concurrency for speedup the process for more, read <a href="https://github.com/abbashosseini/Vinci/wiki">WIKI</a></p>
+</blockquote>
+
+<h3>
+<a id="about-vinci-" class="anchor" href="#about-vinci-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About VinCi :</h3>
+
+<p align="center">
+<img src="https://github.com/abbashosseini/Vinci/blob/master/ScreenShot/P.jpg">
+<img src="https://github.com/abbashosseini/Vinci/blob/master/ScreenShot/L.jpg">
+</p>
+
+<h5>
+<a id="min-api-10" class="anchor" href="#min-api-10" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Min API 10+</h5>
+
+<p>its android library its get <em>URL</em> or <em>URLS</em> from the net and its do this concurrency so no need be worry about sharing resource and its cache / Download the file Synchronously for Now Of Course and later i replace it with Asynchronous NetWorking and another thing Vinci can save file in internal storage and you can get full path and where file can you find and use it for example you can put path (URI) in <em>database</em> and you can now retrieve URI/PATH form database.</p>
+
+<h4>
+<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gradle:</h4>
+
+<div class="highlight highlight-source-groovy-gradle"><pre>    <span class="pl-en">allprojects</span> {
+        repositories {
+            <span class="pl-k">..</span>.
+            maven { url <span class="pl-s"><span class="pl-pds">"</span>https://jitpack.io<span class="pl-pds">"</span></span> }
+        }
+    }</pre></div>
+
+<div class="highlight highlight-source-groovy-gradle"><pre>    <span class="pl-en">dependencies</span> {
+            compile <span class="pl-s"><span class="pl-pds">'</span>com.github.abbashosseini:Vinci:aar<span class="pl-pds">'</span></span>
+    }
+
+</pre></div>
+
+<h4>
+<a id="maven-" class="anchor" href="#maven-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Maven :</h4>
+
+<div class="highlight highlight-text-xml"><pre>    <span class="pl-c">&lt;!-- Step One  --&gt;</span>
+    &lt;<span class="pl-ent">repositories</span>&gt;
+        &lt;<span class="pl-ent">repository</span>&gt;
+            &lt;<span class="pl-ent">id</span>&gt;jitpack.io&lt;/<span class="pl-ent">id</span>&gt;
+            &lt;<span class="pl-ent">url</span>&gt;https://jitpack.io&lt;/<span class="pl-ent">url</span>&gt;
+        &lt;/<span class="pl-ent">repository</span>&gt;
+    &lt;/<span class="pl-ent">repositories</span>&gt;
+
+    <span class="pl-c">&lt;!-- Step TWO  --&gt;</span>
+    &lt;<span class="pl-ent">dependency</span>&gt;
+        &lt;<span class="pl-ent">groupId</span>&gt;com.github.abbashosseini&lt;/<span class="pl-ent">groupId</span>&gt;
+        &lt;<span class="pl-ent">artifactId</span>&gt;Vinci&lt;/<span class="pl-ent">artifactId</span>&gt;
+        &lt;<span class="pl-ent">version</span>&gt;aar&lt;/<span class="pl-ent">version</span>&gt;
+    &lt;/<span class="pl-ent">dependency</span>&gt;
+
+
+</pre></div>
+
+<h1>
+<a id="or" class="anchor" href="#or" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OR</h1>
+
+<h4>
+<a id="add-aar-file-locally--" class="anchor" href="#add-aar-file-locally--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add <strong>aar</strong> file locally  :</h4>
+
+<ul>
+<li>
+<a href="https://github.com/abbashosseini/Vinci/releases/download/aar/Vinci-release.aar">Download</a> AAR File .</li>
+<li>
+<em>go to</em> <strong>File</strong> &gt; <strong>New Module</strong> &gt; <strong>Import .JAR or .AAR Package</strong>
+</li>
+<li>
+<p>Imported and in <strong>dependencies</strong> add :</p>
+
+<div class="highlight highlight-source-groovy-gradle"><pre>
+  compile project(<span class="pl-s"><span class="pl-pds">'</span>:Vinci-release<span class="pl-pds">'</span></span>)       </pre></div>
+</li>
+</ul>
+
+<pre><code>
+###License
+
+    Copyright (C) 2015 AbbasHosseini
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/abbashosseini/Vinci/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/abbashosseini/Vinci/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/abbashosseini/Vinci"></a> is maintained by <a href="https://github.com/abbashosseini">abbashosseini</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
