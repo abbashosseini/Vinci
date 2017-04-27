@@ -41,28 +41,29 @@ public class FirstTab extends android.support.v4.app.Fragment {
                 (RecyclerView) v.findViewById(R.id.recyclerview);
 
 //        String[] urls = {
-//                "http://192.168.43.8/VinCi/Mona_Lisa1.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa2.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa3.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa4.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa5.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa6.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa7.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa8.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa9.jpg"
+//                "http://192.168.43.70/VinCi/Mona_Lisa1.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa2.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa3.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa4.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa5.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa6.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa7.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa8.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa9.jpg"
 //        };
-//
-//        String[] urls = {
-//                "http://192.168.43.8/VinCi/Mona_Lisa1.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa2.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa3.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa4.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa5.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa6.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa7.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa8.jpg",
-//                "http://192.168.43.8/VinCi/Mona_Lisa9.jpg"
+//        String[] urls2 = {
+//                "http://192.168.43.70/VinCi/Mona_Lisa1.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa2.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa3.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa4.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa5.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa6.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa7.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa8.jpg",
+//                "http://192.168.43.70/VinCi/Mona_Lisa9.jpg"
 //        };
+
+
         List<File> files = Vinci.base(getContext()).process().files().list();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**

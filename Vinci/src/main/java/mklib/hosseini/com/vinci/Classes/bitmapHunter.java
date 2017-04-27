@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 /**
 * <p>
-*   Used to display bitmap in the UI threa 
+*   Used to display bitmap in the UI thread
 * </p>
 *
 * @author      Abbas hosseini
@@ -19,7 +19,7 @@ class bitmapHunter implements Runnable {
     final Item item;
     final Loader loader;
 
-    public bitmapHunter(Bitmap bitmap, Item item, Loader loader){
+    protected bitmapHunter(Bitmap bitmap, Item item, Loader loader){
         this.bitmap = bitmap;
         this.item = item;
         this.loader = loader;
@@ -36,4 +36,6 @@ class bitmapHunter implements Runnable {
         else
             item.imageView.setImageResource(loader.displayDefualtDawable.get());
     }
+
+
 }

@@ -48,7 +48,6 @@ public class tab2 extends RecyclerView.Adapter<tab2.ViewHolder>{
         viewHolder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Vinci.base(context).process().load(uri).file().remove();
             }
         });

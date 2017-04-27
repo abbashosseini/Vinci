@@ -62,10 +62,8 @@ public class downloadRequest implements Runnable {
             if(netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
                 return true;
         }
-
         return false;
     }
-
 
     @Override
     public void run() {
