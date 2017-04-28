@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.1_6a2e3749e837c4fbb7f2494a01d73e24b1ff1387.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.1_1bc08aa60d0421bef9cff3bf802bc36811a26104.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/Vinci/Vinci/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="213d2c99daf0162dbe5968160b0f23f263ac2d5c">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/Vinci-Vinci-unspecified_5637a47dcc97b5f6bed281494920d899d00ff095.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.1_d59a9bc4f579ca9c5997e61b5276528b4ae0f993.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.1_6c7196354c3f42b01de9ec3f6af82c6cac6a5ecd.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.1_41b351b51b15bee49c35729681800e8d7716a852.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.1_7eb104edcfbdbafc5d2905ab86a4ea3ce34864d2.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1_d5158c16ab9dc57e8df555fa085b3b0ddc935966.jar" />
+    </item>
+    <item
+        jar="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="/media/sarbaz/code/My Projects/Vinci/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.1_9a6f252af49cb57c34eee1a5a355305aac56fc32.jar" />
+    </item>
+
+</items>
