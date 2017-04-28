@@ -8,7 +8,7 @@
     android:layout_margin="5sp"
     android:layout_gravity="center|center_horizontal|center_vertical">
 
-    <mklib.hosseini.com.vinci.Shapes.HexagonImage
+    <mklib.hosseini.com.vinci.Shapes.RoundedImage
         android:id="@+id/Writer"
         android:layout_width="100sp"
         android:layout_height="100sp"
